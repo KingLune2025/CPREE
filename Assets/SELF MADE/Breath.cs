@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random=System.Random;
 
 public class Breath : MonoBehaviour
 {
@@ -25,11 +26,15 @@ public class Breath : MonoBehaviour
         float distance = Vector3.Distance(vrHeadset.position, militarydude.position);
         if (distance < 0.3048)
         {
+            var random = new Random();
+            double chance = random.Next(1,10);
+            if (chance < 4)
             distanceText.text = distance + "Breathing";
-        }
-        else
-        {
-            distanceText.text = distance + "Not close enough";
+            else if (chance < 8)
+            distanceText.text = distance + "Abnormal Breathing";
+            else
+            distanceText.text = distance + "Not breathing";
+
         }
     }
 }
