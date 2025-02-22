@@ -1,28 +1,49 @@
 using DoorScript;
+using System;
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 public class Opendoor : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public Door door;
+    public XRRayInteractor interactor;
+    public TextMeshProUGUI text;
+    public bool canOpen = false;
+    public InputActionProperty gripInput;
+
     void Start()
     {
-        
+        interactor.hoverEntered.AddListener(OnHoverEnter);
+        interactor.hoverEntered.AddListener(OnHoverExit);
+        text.text = "Added lisener";
     }
 
-    // Update is called once per frame
+    private void OnHoverEnter(HoverEnterEventArgs args)
+    {
+        text.text = door.open + " - DETECTED DOOR";
+        canOpen = true;
+    }
+
+    private void OnHoverExit(HoverEnterEventArgs args)
+    {
+        text.text = door.open + " - DETECTED DOOR";
+        canOpen = false;
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        float grip = gripInput.action.ReadValue<float>();
+        if(grip > 0 && canOpen)
         {
-            Debug.Log("space key was pressed");
-            door.open = !door.open;
+            door.OpenDoor();
         }
-        
-
-
     }
 }
