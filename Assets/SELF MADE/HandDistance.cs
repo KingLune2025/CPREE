@@ -19,6 +19,6 @@ public class HandDistance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = Mathf.Round(Vector3.Distance(rHand.position, lHand.position) * 100)/100 + ((Vector3.Distance(rHand.position, lHand.position)) < 0.07f ? "Yay you can do cpr" : "Clap them chee- I mean hands");
+        text.text = "Hand Distance: " + (Mathf.Round(Vector3.Distance(rHand.position, lHand.position) * 100)*100);
     }
 }

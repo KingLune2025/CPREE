@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HandToCube : MonoBehaviour
@@ -17,6 +18,17 @@ public class HandToCube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = "Right hand distance: " + Mathf.Round(Vector3.Distance(rHand.position, Cube.position) * 100) / 100 + ((Vector3.Distance(rHand.position, Cube.position))) + "Left hand Distance: " + Mathf.Round(Vector3.Distance(lHand.position, Cube.position) * 100) / 100 + ((Vector3.Distance(lHand.position, Cube.position)));
-    }
+        float lHandtoCube = Mathf.Round(Vector3.Distance(lHand.position, Cube.position) * 100) / 100;
+        float rHandtoCube = Mathf.Round(Vector3.Distance(rHand.position, Cube.position) * 100) / 100;
+        float zLDistance = (lHand.position - Cube.position).z; 
+        float zRDistance = (rHand.position - Cube.position).z;
+        if (lHandtoCube < rHandtoCube)
+            text.text = "Left Hand to Cube: " + lHandtoCube + "Depth: " + zLDistance;
+
+        else
+            text.text = "Right Hand to Cube: " + rHandtoCube + "\n Depth: " + zRDistance;
+
+
+
+ }
 }
