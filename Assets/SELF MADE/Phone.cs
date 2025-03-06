@@ -1,61 +1,45 @@
-using DoorScript;
-using System;
 using System.Collections;
-using TMPro;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.XR;
+using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-public class Opendoor : MonoBehaviour
+public class Phone : MonoBehaviour
 {
-    // Start is called before the first frame update
     public XRRayInteractor interactor;
     private bool isInteractable;
     private InputData InputData;
-    public Door door;
     private bool timedOut = false;
     int timer = 0;
-    public TextMeshPro text;
-
+    public Transform phone;
+    // Start is called before the first frame update
     void Start()
     {
         interactor.hoverEntered.AddListener(OnHoverEnter);
         interactor.hoverExited.AddListener(OnHoverExit);
         GameObject myXROrigin = GameObject.Find("XR Origin");
         InputData = myXROrigin.GetComponent<InputData>();
-        text.text = "Added lisener";
     }
 
     private void OnHoverEnter(HoverEnterEventArgs args)
     {
         isInteractable = true;
-     
     }
 
     private void OnHoverExit(HoverExitEventArgs args)
     {
         isInteractable = false;
     }
-
-    void Update()
+        // Update is called once per frame
+        void Update()
     {
-        if (isInteractable)
+        InputData.RController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool test);
+            
+        if (isInteractable && test && !timedOut)
         {
-            text.enabled = true;
-        }
-        else
-        {
-            text.enabled = false;
-        }
-        bool test;
-        InputData.RController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out test);
-
-       if (isInteractable && test && !timedOut)
-        {
-            door.OpenDoor();
+            phone.position = new Vector3(0, 0, 0);
+            phone.rotation = new Quaternion(-90, 0, 0, 0);
             timedOut = true;
         }
         if (timedOut)
