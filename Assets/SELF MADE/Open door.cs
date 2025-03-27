@@ -61,7 +61,7 @@ public class Opendoor : MonoBehaviour
         if (timedOut)
         {
             timer++;
-            if (timer > 60)
+            if (timer > 30)
             {
                 timedOut = false;
                 timer = 0;

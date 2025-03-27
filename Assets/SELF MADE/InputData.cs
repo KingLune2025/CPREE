@@ -24,10 +24,7 @@ public class InputData : MonoBehaviour
         {
             InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref RController);
         }
-        if (!LController.isValid)
-        {
-            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Left, ref LController);
-        }
+       
 
     }
 

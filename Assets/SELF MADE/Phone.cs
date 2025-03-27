@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -13,6 +14,7 @@ public class Phone : MonoBehaviour
     private bool timedOut = false;
     int timer = 0;
     public Transform phone;
+    public TextMeshProUGUI text;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,13 +36,12 @@ public class Phone : MonoBehaviour
         // Update is called once per frame
         void Update()
     {
-        InputData.RController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool test);
+        bool test;
+        InputData.RController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out test);
             
         if (isInteractable && test && !timedOut)
         {
-            phone.position = new Vector3(0, 0, 0);
-            phone.rotation = new Quaternion(-90, 0, 0, 0);
-            timedOut = true;
+            text.text = "Calling...";
         }
         if (timedOut)
         {
