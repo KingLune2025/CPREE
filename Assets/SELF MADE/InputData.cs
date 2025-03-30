@@ -10,13 +10,7 @@ public class InputData : MonoBehaviour
 {
     public InputDevice RController;
     public InputDevice LController;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref RController);
-        InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref LController);
-    }
+
 
     // Update is called once per frame
     void Update()
