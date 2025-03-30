@@ -14,7 +14,8 @@ public class InputData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref RController);
+        InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref LController);
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class InputData : MonoBehaviour
         if (devices.Count > 0)
         {
             RController = devices[0];
-            Console.WriteLine($"Found input device: {RController.name} with characteristics: {characteristics}");
+            Debug.Log($"Found input device: {RController.name} with characteristics: {characteristics}");
         }
     }
 }
