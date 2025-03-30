@@ -1758,8 +1758,8 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_Camera: {fileID: 232181964}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2076,6 +2076,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &977915898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3900108755062758285, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1465701333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1049409379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3113,6 +3119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactor: {fileID: 1750552531}
+  isInteractable: 0
+  InputData: {fileID: 0}
+  timedOut: 0
+  timer: 0
   phone: {fileID: 1524228812}
 --- !u!1 &1331974733
 GameObject:
@@ -3536,7 +3546,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3900108755062758285, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1465701337}
   m_SourcePrefab: {fileID: 100100000, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
 --- !u!224 &1465701334 stripped
 RectTransform:
@@ -3544,6 +3558,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1465701333}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1465701337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977915898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104e5682e2f62c444a3ef865bcc2192d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1524228811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3633,11 +3659,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1716692324}
+      addedObject: {fileID: 1716692326}
     - targetCorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1716692326}
+      addedObject: {fileID: 1716692324}
   m_SourcePrefab: {fileID: 100100000, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
 --- !u!4 &1524228812 stripped
 Transform:
@@ -4078,13 +4104,13 @@ MonoBehaviour:
   m_HoverEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1716692319}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1716692326}
+        m_TargetAssemblyTypeName: ConversationStarter, Assembly-CSharp
+        m_MethodName: testHoverEnter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4093,13 +4119,13 @@ MonoBehaviour:
   m_HoverExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1716692319}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1716692326}
+        m_TargetAssemblyTypeName: ConversationStarter, Assembly-CSharp
+        m_MethodName: testHoverExit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4151,6 +4177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myConversation: {fileID: 2090716761}
+  interactor: {fileID: 1750552531}
 --- !u!114 &1723358758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5779,7 +5806,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2023345308}
         m_TargetAssemblyTypeName: DoorScript.Door, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: enableTest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5792,13 +5819,13 @@ MonoBehaviour:
   m_HoverExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 785904837}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2023345308}
+        m_TargetAssemblyTypeName: DoorScript.Door, Assembly-CSharp
+        m_MethodName: enableTest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6095,9 +6122,9 @@ SceneRoots:
   - {fileID: 4431349}
   - {fileID: 232181962}
   - {fileID: 1122327017}
-  - {fileID: 1555712158}
-  - {fileID: 2090716762}
   - {fileID: 728576731}
+  - {fileID: 2090716762}
+  - {fileID: 1555712158}
   - {fileID: 1294966056}
   - {fileID: 1682786074}
   - {fileID: 1524228811}

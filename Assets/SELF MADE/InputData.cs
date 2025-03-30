@@ -32,7 +32,7 @@ public class InputData : MonoBehaviour
         UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(characteristics, devices);
         if (devices.Count > 0)
         {
-            RController = devices[0];
+            inputDevice = devices[0];
             Debug.Log($"Found input device: {RController.name} with characteristics: {characteristics}");
         }
     }

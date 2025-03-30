@@ -32,7 +32,6 @@ public class Opendoor : MonoBehaviour
     private void OnHoverEnter(HoverEnterEventArgs args)
     {
         isInteractable = true;
-     
     }
 
     private void OnHoverExit(HoverExitEventArgs args)

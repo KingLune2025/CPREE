@@ -8,7 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ConversationStarter : MonoBehaviour
 {
     [SerializeField] private NPCConversation myConversation;
-    public XRRayInteractor interactor;
+    public UnityEngine.XR.Interaction.Toolkit.Interactors.XRRayInteractor interactor;
     private bool isInteractable;
     private InputData InputData;
     private bool conversationStarted = false;
@@ -32,15 +32,27 @@ public class ConversationStarter : MonoBehaviour
         }
     }
 
+    public void testHoverEnter()
+    {
+        Debug.Log("I got hovered YAY");
+        isInteractable = true;
+    }
+
+    public void testHoverExit()
+    {
+        Debug.Log("I lost my hover noo");
+        isInteractable = false;
+        conversationStarted = false; // Reset when leaving
+    }
+
     private void OnHoverEnter(HoverEnterEventArgs args)
     {
-        isInteractable = true;
+
     }
 
     private void OnHoverExit(HoverExitEventArgs args)
     {
-        isInteractable = false;
-        conversationStarted = false; // Reset when leaving
+        
     }
 
     void Update()

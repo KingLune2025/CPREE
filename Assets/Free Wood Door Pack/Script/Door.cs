@@ -7,6 +7,7 @@ namespace DoorScript
 
 
 public class Door : MonoBehaviour {
+	public bool test = false;
 	public bool open;
 	public float smooth = 1.0f;
 	float DoorOpenAngle = -90.0f;
@@ -32,7 +33,15 @@ public class Door : MonoBehaviour {
             transform.localRotation = Quaternion.Slerp(transform.localRotation, target1, Time.deltaTime * 5 * smooth);
 	
 		}  
+
+
 	}
+
+	public void enableTest()
+    {
+		test = !test;
+		Debug.Log(test);
+    }
 
 	public void OpenDoor(){
 		open =!open;
