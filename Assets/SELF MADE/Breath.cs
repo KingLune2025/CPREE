@@ -8,7 +8,7 @@ public class Breath : MonoBehaviour
 {
     public Transform vrHeadset;
     public Transform militarydude;
-    public TextMeshPro distanceText;
+    public TextMeshProUGUI distanceText;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,13 +28,14 @@ public class Breath : MonoBehaviour
         {
             var random = new Random();
             double chance = random.Next(1,10);
-            if (chance < 4)
-            distanceText.text = distance + "Breathing";
-            else if (chance < 8)
-            distanceText.text = distance + "Abnormal Breathing";
+            if (chance < 2)
+                GameManager.Instance.setBreathingState(BreathingState.Breathing);
+            else if (chance < 7)
+                GameManager.Instance.setBreathingState(BreathingState.AbnormalBreathing);
             else
-            distanceText.text = distance + "Not breathing";
+                GameManager.Instance.setBreathingState(BreathingState.NotBreathing);
 
+            distanceText.text = distance + GameManager.Instance.breathingState.ToString();
         }
     }
 }

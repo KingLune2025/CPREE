@@ -12,38 +12,57 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class Opendoor : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public Door door;
     public XRRayInteractor interactor;
-    public TextMeshProUGUI text;
-    public bool canOpen = false;
-    public InputActionProperty gripInput;
+    private bool isInteractable;
+    private InputData InputData;
+    public Door door;
+    private bool timedOut = false;
+    int timer = 0;
+    public TextMeshPro text;
 
     void Start()
     {
         interactor.hoverEntered.AddListener(OnHoverEnter);
-        interactor.hoverEntered.AddListener(OnHoverExit);
-        text.text = "Added lisener";
+        interactor.hoverExited.AddListener(OnHoverExit);
+        GameObject myXROrigin = GameObject.Find("XR Origin");
+        InputData = myXROrigin.GetComponent<InputData>();
+        
     }
 
     private void OnHoverEnter(HoverEnterEventArgs args)
     {
-        text.text = door.open + " - DETECTED DOOR";
-        canOpen = true;
+        isInteractable = true;
+     
     }
 
-    private void OnHoverExit(HoverEnterEventArgs args)
+    private void OnHoverExit(HoverExitEventArgs args)
     {
-        text.text = door.open + " - DETECTED DOOR";
-        canOpen = false;
+        isInteractable = false;
     }
 
     void Update()
     {
-        float grip = gripInput.action.ReadValue<float>();
-        if(grip > 0 && canOpen)
+        text.enabled = isInteractable;
+        bool test = false;
+        if (InputData != null && InputData.RController != null)
+        {
+            InputData.RController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out test);
+        }
+        text.text = test ? "Pressing Trigger!" : "Release to Interact";
+
+        if (isInteractable && test && !timedOut)
         {
             door.OpenDoor();
+            timedOut = true;
+        }
+        if (timedOut)
+        {
+            timer++;
+            if (timer > 60)
+            {
+                timedOut = false;
+                timer = 0;
+            }
         }
     }
 }

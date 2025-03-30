@@ -22,13 +22,8 @@ public class HandToCube : MonoBehaviour
         float rHandtoCube = Mathf.Round(Vector3.Distance(rHand.position, Cube.position) * 100) / 100;
         float zLDistance = (lHand.position - Cube.position).z; 
         float zRDistance = (rHand.position - Cube.position).z;
-        if (lHandtoCube < rHandtoCube)
-            text.text = "Left Hand to Cube: " + lHandtoCube + "Depth: " + zLDistance;
 
-        else
-            text.text = "Right Hand to Cube: " + rHandtoCube + "\n Depth: " + zRDistance;
-
-
-
- }
+        GameManager.Instance.setHandCubeDist(Mathf.Min(Vector3.Distance(rHand.position, Cube.position), Vector3.Distance(lHand.position, Cube.position)));
+        GameManager.Instance.setVertDist(Mathf.Min((rHand.position - Cube.position).z, (lHand.position - Cube.position).z));
+    }
 }
