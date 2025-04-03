@@ -52,7 +52,7 @@ public class ConversationStarter : MonoBehaviour
 
     private void OnHoverExit(HoverExitEventArgs args)
     {
-        
+
     }
 
     void Update()

@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     static float prevDepth = 0.0f;
     static bool isCompressing = false;
 
+    public TextMeshProUGUI tutorialText;
+
     private void Awake()
     {
         // Ensure only one instance exists
@@ -118,7 +120,10 @@ public class GameManager : MonoBehaviour
 
             // Update prevDepth *after* checking conditions
             prevDepth = handToCubeVerticalDist;
-        }
+
+            if (timer > 15) 
+                tutorialText.enabled = false;
+            }
     }
 
 }

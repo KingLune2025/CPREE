@@ -495,8 +495,8 @@ Transform:
   m_GameObject: {fileID: 151349130}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 3.13, y: 0, z: 4.7200003}
-  m_LocalScale: {x: 9.1784, y: 4, z: 0.25}
+  m_LocalPosition: {x: 3.06, y: 0, z: 10.44}
+  m_LocalScale: {x: 14.9264765, y: 4, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2010297810}
@@ -1155,8 +1155,8 @@ Transform:
   m_GameObject: {fileID: 251533907}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.54, y: 0, z: 4.7200003}
-  m_LocalScale: {x: 9.1784, y: 4, z: 0.25}
+  m_LocalPosition: {x: -4.54, y: 0, z: 10.39}
+  m_LocalScale: {x: 17.421522, y: 4, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2010297810}
@@ -1187,7 +1187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6f0a4d48fa5ef4b43a409c7ba4089943, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6f0a4d48fa5ef4b43a409c7ba4089943, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1252,7 +1252,7 @@ PrefabInstance:
     - target: {fileID: 2215901504533519528, guid: 3ca427402f0ef1347adc69f0ba78d0bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.88
+      value: -0.00999999
       objectReference: {fileID: 0}
     - target: {fileID: 2215901504533519528, guid: 3ca427402f0ef1347adc69f0ba78d0bf,
         type: 3}
@@ -1689,6 +1689,155 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540330437}
   m_CullTransparentMesh: 1
+--- !u!1 &662086725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 662086726}
+  - component: {fileID: 662086728}
+  - component: {fileID: 662086727}
+  m_Layer: 5
+  m_Name: Tutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &662086726
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662086725}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1122327017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 213}
+  m_SizeDelta: {x: 800, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &662086727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662086725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Movement
+
+    Left Joystick: Rotation
+
+    Right Joystick: Movement
+
+    Right
+    Trigger: Interacting
+
+
+    MCQ
+
+    Left Joystick:shifting between choices
+
+    Right
+    Trigger: Select choice'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &662086728
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662086725}
+  m_CullTransparentMesh: 1
 --- !u!1 &728576727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,8 +2039,8 @@ Transform:
   m_GameObject: {fileID: 744973830}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.454, y: -0.13300002, z: 9.402899}
-  m_LocalScale: {x: 4, y: 2.2848, z: 0.25}
+  m_LocalPosition: {x: 1.84, y: -0.13300002, z: 9.402899}
+  m_LocalScale: {x: 2.6850212, y: 2.2848, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2010297810}
@@ -2098,7 +2247,7 @@ PrefabInstance:
     - target: {fileID: 2304931149449798800, guid: 0f76269ae1c485146a382146b683886b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7896513
+      value: -0.10034871
       objectReference: {fileID: 0}
     - target: {fileID: 2304931149449798800, guid: 0f76269ae1c485146a382146b683886b,
         type: 3}
@@ -2389,6 +2538,7 @@ RectTransform:
   - {fileID: 540330438}
   - {fileID: 486864120}
   - {fileID: 1278034741}
+  - {fileID: 662086726}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2545,7 +2695,7 @@ PrefabInstance:
     - target: {fileID: 2215901504533519528, guid: 3ca427402f0ef1347adc69f0ba78d0bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.86
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 2215901504533519528, guid: 3ca427402f0ef1347adc69f0ba78d0bf,
         type: 3}
@@ -2688,7 +2838,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 64dccf619abaee04ab1842c4ec5e5f70,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.202
+      value: 2.984
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 64dccf619abaee04ab1842c4ec5e5f70,
         type: 3}
@@ -2901,7 +3051,7 @@ PrefabInstance:
     - target: {fileID: 2215901504533519528, guid: 3ca427402f0ef1347adc69f0ba78d0bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.88
+      value: -0.00999999
       objectReference: {fileID: 0}
     - target: {fileID: 2215901504533519528, guid: 3ca427402f0ef1347adc69f0ba78d0bf,
         type: 3}
@@ -3118,12 +3268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9772af15b23df68409c2d98d7fe4251d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactor: {fileID: 1750552531}
-  isInteractable: 0
-  InputData: {fileID: 0}
-  timedOut: 0
-  timer: 0
-  phone: {fileID: 1524228812}
 --- !u!1 &1331974733
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,6 +3552,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 728576731}
     m_Modifications:
+    - target: {fileID: 3852935656990629450, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -66.92099
+      objectReference: {fileID: 0}
     - target: {fileID: 3900108754347413305, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca,
         type: 3}
       propertyPath: m_textAlignment
@@ -3665,12 +3814,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1716692324}
   m_SourcePrefab: {fileID: 100100000, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3, type: 3}
---- !u!4 &1524228812 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 463835053371953216, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1524228811}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1555712158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4041,6 +4184,7 @@ MonoBehaviour:
   handDist: 0
   handToCubeDist: 0
   handToCubeVerticalDist: 0
+  tutorialText: {fileID: 662086727}
 --- !u!1 &1716692319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3,
@@ -5575,6 +5719,7 @@ Transform:
   - {fileID: 151349134}
   - {fileID: 251533911}
   - {fileID: 1807234596}
+  - {fileID: 2095396690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2014769797
@@ -5676,8 +5821,8 @@ Transform:
   m_GameObject: {fileID: 2014769797}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 1.511, z: 9.402899}
-  m_LocalScale: {x: 9.132, y: 1, z: 0.25}
+  m_LocalPosition: {x: -0.74, y: 1.511, z: 9.402899}
+  m_LocalScale: {x: 7.8525, y: 1, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2010297810}
@@ -5911,7 +6056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4554739439305560, guid: c1088612ebac05d4a958da56ca606447, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0010000467
+      value: -0.89100003
       objectReference: {fileID: 0}
     - target: {fileID: 4554739439305560, guid: c1088612ebac05d4a958da56ca606447, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5989,62 +6134,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentIDCounter: 40
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":-61.99994,"yPos":139.999512},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"MY
-    DAD JUST FELL DOWN AND I DON''T KNOW WHAT TO DO!!!","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":-294.999969,"yPos":135.999512},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"HELP!!!
-    MY DAD IS DYING!","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":167.000061,"yPos":136.999512},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"My
-    dad just fell down and he seems to be unconscious.","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":-304.999969,"yPos":321.999664},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"WE
-    DON''T HAVE TIME FOR THAT! YOU NEED TO COME HERE NOW!","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":-80.99994,"yPos":322.999664},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"I-I
-    DON''T KNOW. I THINK HE''S DYING YOU NEED TO SEND HELP!","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":-524.999939,"yPos":324.999664},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"My
-    dad just fell down and he isn''t breathing.","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":-354.999939,"yPos":505.999664},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"9889
-    Wade Blvd","parentUIDs":[8],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":462.000458,"yPos":371.999725},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"9889
-    Wade Blvd","parentUIDs":[11],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":462.000458,"yPos":608.999756},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"No","parentUIDs":[13],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":214.000061,"yPos":793.9994},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"NO!
-    I DON''T WHAT TO DO!","parentUIDs":[15],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":482.000458,"yPos":786.9994},"ID":18,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes,
-    I''m starting now!","parentUIDs":[15],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":21}],"EditorInfo":{"isRoot":false,"xPos":690.0005,"yPos":609.999756},"ID":20,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes","parentUIDs":[13],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":23}],"EditorInfo":{"isRoot":false,"xPos":195.000122,"yPos":1005.99921},"ID":22,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay,
-    I''m doing it.","parentUIDs":[17],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":26}],"EditorInfo":{"isRoot":false,"xPos":441.000366,"yPos":1182.99976},"ID":25,"ParamActions":[],"TMPFontGUID":null,"Text":"No,
-    there is no AED!","parentUIDs":[19,23],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":29}],"EditorInfo":{"isRoot":false,"xPos":459.000458,"yPos":1376.00073},"ID":28,"ParamActions":[],"TMPFontGUID":null,"Text":"No","parentUIDs":[26],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":31}],"EditorInfo":{"isRoot":false,"xPos":460.000458,"yPos":1541.001},"ID":30,"ParamActions":[],"TMPFontGUID":null,"Text":"No","parentUIDs":[29],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":33}],"EditorInfo":{"isRoot":false,"xPos":460.000458,"yPos":1714.001},"ID":32,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes,
-    he had heart surgery around 3 years ago.","parentUIDs":[31],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":35}],"EditorInfo":{"isRoot":false,"xPos":477.000458,"yPos":1899.001},"ID":34,"ParamActions":[],"TMPFontGUID":null,"Text":"He
-    used to go to a cardiologist but when he got better he stopped.","parentUIDs":[33],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":37}],"EditorInfo":{"isRoot":false,"xPos":488.000336,"yPos":2077.00073},"ID":36,"ParamActions":[],"TMPFontGUID":null,"Text":"He
-    smokes around a pack a day.","parentUIDs":[35],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":39}],"EditorInfo":{"isRoot":false,"xPos":510.000336,"yPos":2264.00024},"ID":38,"ParamActions":[],"TMPFontGUID":null,"Text":"They
-    are here!","parentUIDs":[37],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":2},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":-65,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"911,
+  CurrentIDCounter: 41
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":-119.333511,"yPos":-1688.00024},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"MY
+    DAD JUST FELL DOWN AND I DON''T KNOW WHAT TO DO!!!","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":-352.333618,"yPos":-1692.00024},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"HELP!!!
+    MY DAD IS DYING!","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":100.33255,"yPos":-1690.33374},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"My
+    dad just fell down and he seems to be unconscious. He isn''t breathing.","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":-362.333679,"yPos":-1505.99976},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"WE
+    DON''T HAVE TIME FOR THAT! YOU NEED TO COME HERE NOW!","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":-138.333389,"yPos":-1504.99976},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"I-I
+    DON''T KNOW. I THINK HE''S DYING YOU NEED TO SEND HELP!","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":-582.3337,"yPos":-1502.99976},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"My
+    dad just fell down and he isn''t breathing.","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":-412.333557,"yPos":-1322.00024},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"9889
+    Wade Blvd","parentUIDs":[8],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":404.667053,"yPos":-1456},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"9889
+    Wade Blvd","parentUIDs":[11],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":404.667053,"yPos":-1218.99976},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"No","parentUIDs":[13],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":156.665863,"yPos":-1033.99988},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"NO!
+    I DON''T WHAT TO DO!","parentUIDs":[15],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":424.666931,"yPos":-1041},"ID":18,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes,
+    I''m starting now!","parentUIDs":[15],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":21}],"EditorInfo":{"isRoot":false,"xPos":632.667542,"yPos":-1217.99976},"ID":20,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes","parentUIDs":[13],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":23}],"EditorInfo":{"isRoot":false,"xPos":137.666077,"yPos":-822.000854},"ID":22,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay,
+    I''m doing it.","parentUIDs":[17],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":26}],"EditorInfo":{"isRoot":false,"xPos":383.66687,"yPos":-644.9994},"ID":25,"ParamActions":[],"TMPFontGUID":null,"Text":"No,
+    there is no AED!","parentUIDs":[19,23],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":29}],"EditorInfo":{"isRoot":false,"xPos":401.667053,"yPos":-451.99823},"ID":28,"ParamActions":[],"TMPFontGUID":null,"Text":"No","parentUIDs":[26],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":31}],"EditorInfo":{"isRoot":false,"xPos":402.667053,"yPos":-286.999084},"ID":30,"ParamActions":[],"TMPFontGUID":null,"Text":"No","parentUIDs":[29],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":33}],"EditorInfo":{"isRoot":false,"xPos":402.667053,"yPos":-113.999023},"ID":32,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes,
+    he had heart surgery around 3 years ago.","parentUIDs":[31],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":35}],"EditorInfo":{"isRoot":false,"xPos":419.666748,"yPos":71.0002441},"ID":34,"ParamActions":[],"TMPFontGUID":null,"Text":"He
+    used to go to a cardiologist but when he got better he stopped.","parentUIDs":[33],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":37}],"EditorInfo":{"isRoot":false,"xPos":430.6668,"yPos":249.000916},"ID":36,"ParamActions":[],"TMPFontGUID":null,"Text":"He
+    smokes around a pack a day.","parentUIDs":[35],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":39}],"EditorInfo":{"isRoot":false,"xPos":452.6662,"yPos":435.996765},"ID":38,"ParamActions":[],"TMPFontGUID":null,"Text":"They
+    are here!","parentUIDs":[37],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":2},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":-122.333389,"yPos":-1805.99976},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"911,
     what''s your emergency?","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":6},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":-303.999969,"yPos":215.999634},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay,
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":6},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":-361.333679,"yPos":-1611.99976},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay,
     I''m here to help. What happened to your dad?","parentUIDs":[1,2],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":-527.999939,"yPos":410.999542},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay,
-    stay calm. I''m sending help right now. What''s your location?","parentUIDs":[7],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":161.000061,"yPos":367.999725},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay,
-    stay calm. I''m sending help right now. What''s your location?","parentUIDs":[3,5,6],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":14},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":20}],"EditorInfo":{"isRoot":false,"xPos":458.000458,"yPos":485.999725},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"Got
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":-575.333435,"yPos":-1418.33325},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay,
+    stay calm. I''m sending help right now. What''s your location?","parentUIDs":[3,7],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":124.9993,"yPos":-1464},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay,
+    stay calm. I''m sending help right now. What''s your location?","parentUIDs":[5,6],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":14},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":20}],"EditorInfo":{"isRoot":false,"xPos":400.667053,"yPos":-1342.00024},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"Got
     it. Is he breathing?","parentUIDs":[12],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":16},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":18}],"EditorInfo":{"isRoot":false,"xPos":467.000458,"yPos":690.9994},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"We
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":16},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":18}],"EditorInfo":{"isRoot":false,"xPos":409.6668,"yPos":-1137.00024},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"We
     need to start CPR. Do you know how to do it?","parentUIDs":[10,14],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":22}],"EditorInfo":{"isRoot":false,"xPos":210.000122,"yPos":876.9992},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"That''s
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":22}],"EditorInfo":{"isRoot":false,"xPos":152.665924,"yPos":-951.000244},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"That''s
     okay. I''ll guide you. Put the heel of your hand on the center of the chest.
     Place your other hand on top of the first, interlocking your fingers. Keep your
     arms straight and position your shoulders directly above your hands. You need
     to push hard and fast. At least 2 inches deep at a rate of 100 - 120 beats per
     minute.","parentUIDs":[16],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":25}],"EditorInfo":{"isRoot":false,"xPos":475.000458,"yPos":875.9992},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Good.
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":25}],"EditorInfo":{"isRoot":false,"xPos":417.666748,"yPos":-952.000244},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Good.
     Begin chest compressions - hard and fast. At least 2 inches deep and  100 - 120
     beats per minute. Is there an AED around?","parentUIDs":[18],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":699.0005,"yPos":694.999451},"ID":21,"ParamActions":[],"TMPFontGUID":null,"Text":"Good.
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":641.6678,"yPos":-1133.00024},"ID":21,"ParamActions":[],"TMPFontGUID":null,"Text":"Good.
     Keep an eye on his breathing. Help is on the way.","parentUIDs":[20],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":25}],"EditorInfo":{"isRoot":false,"xPos":204.000122,"yPos":1097.99927},"ID":23,"ParamActions":[],"TMPFontGUID":null,"Text":"Do
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":25}],"EditorInfo":{"isRoot":false,"xPos":146.665924,"yPos":-730},"ID":23,"ParamActions":[],"TMPFontGUID":null,"Text":"Do
     you have an AED nearby?","parentUIDs":[22],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":28}],"EditorInfo":{"isRoot":false,"xPos":450.000366,"yPos":1270.00024},"ID":26,"ParamActions":[],"TMPFontGUID":null,"Text":"That''s
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":28}],"EditorInfo":{"isRoot":false,"xPos":392.666748,"yPos":-557.9984},"ID":26,"ParamActions":[],"TMPFontGUID":null,"Text":"That''s
     okay. Just keep doing compressions. In the meantime I want you to answer a few
     questions for me. Has your parent been diagnosed with diabetes?","parentUIDs":[25],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":30}],"EditorInfo":{"isRoot":false,"xPos":457.000458,"yPos":1448.00049},"ID":29,"ParamActions":[],"TMPFontGUID":null,"Text":"Are
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":30}],"EditorInfo":{"isRoot":false,"xPos":399.667053,"yPos":-379.999329},"ID":29,"ParamActions":[],"TMPFontGUID":null,"Text":"Are
     they on medication?","parentUIDs":[28],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":32}],"EditorInfo":{"isRoot":false,"xPos":466.000458,"yPos":1619.00122},"ID":31,"ParamActions":[],"TMPFontGUID":null,"Text":"Ok
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":32}],"EditorInfo":{"isRoot":false,"xPos":408.6668,"yPos":-208.998718},"ID":31,"ParamActions":[],"TMPFontGUID":null,"Text":"Ok
     good, you''re doing great! Just keep doing CPR. Have they had any surgery?","parentUIDs":[30],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":34}],"EditorInfo":{"isRoot":false,"xPos":468.000458,"yPos":1797.001},"ID":33,"ParamActions":[],"TMPFontGUID":null,"Text":"Do
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":34}],"EditorInfo":{"isRoot":false,"xPos":410.666565,"yPos":-30.99945},"ID":33,"ParamActions":[],"TMPFontGUID":null,"Text":"Do
     they have a medical doctor?","parentUIDs":[32],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":36}],"EditorInfo":{"isRoot":false,"xPos":482.000458,"yPos":1973.001},"ID":35,"ParamActions":[],"TMPFontGUID":null,"Text":"Does
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":36}],"EditorInfo":{"isRoot":false,"xPos":424.666931,"yPos":144.998367},"ID":35,"ParamActions":[],"TMPFontGUID":null,"Text":"Does
     your dad smoke, drink, or do drugs?","parentUIDs":[34],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":38}],"EditorInfo":{"isRoot":false,"xPos":491.000458,"yPos":2152.00171},"ID":37,"ParamActions":[],"TMPFontGUID":null,"Text":"The
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":38}],"EditorInfo":{"isRoot":false,"xPos":433.667053,"yPos":324.000244},"ID":37,"ParamActions":[],"TMPFontGUID":null,"Text":"The
     ambulance will be here in a few seconds. Just hang in there.","parentUIDs":[36],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
-    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":507.000336,"yPos":2330.99927},"ID":39,"ParamActions":[],"TMPFontGUID":null,"Text":"Great,
+    Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":449.666443,"yPos":502.995},"ID":39,"ParamActions":[],"TMPFontGUID":null,"Text":"Great,
     let them take over now. You did an excellent job!","parentUIDs":[38],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"911
     Operator","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
@@ -6110,6 +6255,111 @@ Transform:
   - {fileID: 1840806029}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2095396689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095396690}
+  - component: {fileID: 2095396693}
+  - component: {fileID: 2095396692}
+  - component: {fileID: 2095396691}
+  m_Layer: 0
+  m_Name: Cube (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2095396690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095396689}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 17.66}
+  m_LocalScale: {x: 9.1784, y: 4, z: 0.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2010297810}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2095396691
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095396689}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2095396692
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095396689}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2095396693
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095396689}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
