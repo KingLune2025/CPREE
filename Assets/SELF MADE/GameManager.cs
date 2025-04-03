@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
     public float handToCubeDist = 0.0f;
     public float handToCubeVerticalDist = 0.0f;
 
-    static float maxDepth = 0.3f;
-    static float leeway = maxDepth * 0.3f; // 30% leeway
+    static float maxDepth = 0.35f;
+    static float leeway = maxDepth * 0.5f;
     static float minAllowedDepth = maxDepth - leeway;
     static float maxAllowedDepth = maxDepth + leeway;
 
@@ -89,18 +89,14 @@ public class GameManager : MonoBehaviour
     {
         if (handToCubeDist < 0.4 && handDist < 0.1)
         {
-            text.text = ("Hand Distance: " + handDist + "\nvert dist" + handToCubeVerticalDist + "reg dist: " + handToCubeDist);
-            Debug.Log("vert dist: " + handToCubeVerticalDist);
-            Debug.Log("prev depth: " + prevDepth);
+            //text.text = ("Hand Distance: " + handDist + "\nvert dist" + handToCubeVerticalDist + "reg dist: " + handToCubeDist + "score: " + score);
 
             if (handToCubeVerticalDist < prevDepth) // moving down
             {
                 isCompressing = true;
-                Debug.Log("Moving down!");
             }
             else if (handToCubeVerticalDist > prevDepth && isCompressing) // moving up after compression
             {
-                Debug.Log("Moving up!");
                 if (handToCubeVerticalDist >= minAllowedDepth && handToCubeVerticalDist <= maxAllowedDepth)
                 {
                     Debug.Log("Compression Successful!");
@@ -109,10 +105,12 @@ public class GameManager : MonoBehaviour
                 else if (handToCubeVerticalDist > maxAllowedDepth)
                 {
                     Debug.Log("Compression too deep!");
+                    score--;
                 }
                 else
                 {
                     Debug.Log("Compression too shallow!");
+                    score--;
                 }
 
                 isCompressing = false;
@@ -121,7 +119,11 @@ public class GameManager : MonoBehaviour
             // Update prevDepth *after* checking conditions
             prevDepth = handToCubeVerticalDist;
 
-            if (timer > 15) 
+
+            //Debug.Log("Timer: " + timer);
+            timer += Time.deltaTime;
+
+            if (timer > 3) 
                 tutorialText.enabled = false;
             }
     }

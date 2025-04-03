@@ -40,7 +40,6 @@ public class Door : MonoBehaviour {
 	public void enableTest()
     {
 		test = !test;
-		Debug.Log(test);
     }
 
 	public void OpenDoor(){

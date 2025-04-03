@@ -7,7 +7,7 @@ using UnityEngine;
 public class HandToCube : MonoBehaviour
 {
     public Transform Cube, rHand, lHand;
-    public TextMeshProUGUI text;
+
 
     // Start is called before the first frame update
     void Start()
