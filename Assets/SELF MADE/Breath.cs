@@ -24,7 +24,7 @@ public class Breath : MonoBehaviour
             return;
         }
         float distance = Vector3.Distance(vrHeadset.position, militarydude.position);
-        if (distance < 0.3048)
+        if (distance < 1)
         {
             var random = new Random();
             double chance = random.Next(1,10);

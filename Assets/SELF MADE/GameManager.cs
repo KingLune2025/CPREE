@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public List<string> mistakes = new List<string>();
     public bool isAlive = true;
 
-    public BreathingState breathingState = BreathingState.Breathing;
+    public BreathingState breathingState = BreathingState.None;
     public float handDist = 0.0f;
     public float handToCubeDist = 0.0f;
     public float handToCubeVerticalDist = 0.0f;
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     static bool isCompressing = false;
 
     public TextMeshProUGUI tutorialText;
+    public TextMeshProUGUI BreathingText;
 
     private void Awake()
     {
@@ -87,6 +88,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        timer += Time.deltaTime;
+
+        //CPR 
         if (handToCubeDist < 0.4 && handDist < 0.1)
         {
             //text.text = ("Hand Distance: " + handDist + "\nvert dist" + handToCubeVerticalDist + "reg dist: " + handToCubeDist + "score: " + score);
@@ -118,22 +122,35 @@ public class GameManager : MonoBehaviour
 
             // Update prevDepth *after* checking conditions
             prevDepth = handToCubeVerticalDist;
-
-
-            //Debug.Log("Timer: " + timer);
-            timer += Time.deltaTime;
-
-            if (timer > 3) 
-                tutorialText.enabled = false;
             }
+
+
+        //Tutorial Text
+        if (timer > 10)
+            tutorialText.enabled = false;
+
+
+        //Breathing
+        if (breathingState == BreathingState.None)
+            BreathingText.enabled = false;
+        else
+        {
+            BreathingText.enabled = true;
+            BreathingText.text = (breathingState.ToString());
+        }
+
     }
 
 }
 
 public enum BreathingState
 {
+    None,
     Breathing,
     AbnormalBreathing,
     NotBreathing
 }
+
+
+
 
