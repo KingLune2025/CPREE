@@ -3925,7 +3925,7 @@ MonoBehaviour:
   handToCubeVerticalDist: 0
   tutorialText: {fileID: 662086727}
   BreathingText: {fileID: 540330439}
-  endGame: {fileID: 1346684006}
+  endGameButton: {fileID: 1346684006}
 --- !u!1 &1716692319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3,
