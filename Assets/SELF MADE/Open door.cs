@@ -47,7 +47,8 @@ public class Opendoor : MonoBehaviour
         {
             InputData.RController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out test);
         }
-        text.text = test ? "" : "Press Right Trigger to Open";
+        if (!door.open)
+            text.text = test ? "" : "Press Right Trigger to Open";
 
         if (isInteractable && test && !timedOut)
         {

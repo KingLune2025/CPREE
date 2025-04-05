@@ -9,6 +9,7 @@ public class Breath : MonoBehaviour
     public Transform vrHeadset;
     public Transform militarydude;
     public TextMeshProUGUI distanceText;
+    private bool breathChecked = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +19,15 @@ public class Breath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (vrHeadset == null || militarydude == null || distanceText == null)
         {
             Debug.LogError("References are missing!");
             return;
         }
         float distance = Vector3.Distance(vrHeadset.position, militarydude.position);
-        if (distance < 1)
+        Debug.Log("Distance: " + distance);
+        if (distance < 1.8 && !breathChecked)
         {
             var random = new Random();
             double chance = random.Next(1,10);
@@ -35,7 +38,7 @@ public class Breath : MonoBehaviour
             else
                 GameManager.Instance.setBreathingState(BreathingState.NotBreathing);
 
-            distanceText.text = distance + GameManager.Instance.breathingState.ToString();
+            breathChecked = true;
         }
     }
 }
