@@ -24,6 +24,6 @@ public class HandToCube : MonoBehaviour
         float zRDistance = (rHand.position - Cube.position).z;
 
         GameManager.Instance.setHandCubeDist(Mathf.Min(Vector3.Distance(rHand.position, Cube.position), Vector3.Distance(lHand.position, Cube.position)));
-        GameManager.Instance.setVertDist(Mathf.Min((rHand.position - Cube.position).z, (lHand.position - Cube.position).z));
+        GameManager.Instance.setVertDist((rHand.position - Cube.position).y);
     }
 }

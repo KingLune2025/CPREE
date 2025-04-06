@@ -20,13 +20,18 @@ public class GameManager : MonoBehaviour
     public float handToCubeDist = 0.0f;
     public float handToCubeVerticalDist = 0.0f;
 
-    static float maxDepth = 0.35f;
-    static float leeway = maxDepth * 0.5f;
-    static float minAllowedDepth = maxDepth - leeway;
-    static float maxAllowedDepth = maxDepth + leeway;
+    static float minCompressionDepth = 0.02f; // 2 cm
+    static float maxCompressionDepth = 0.06f; // 6 cm
+    static float minCompressionTime = 0.2f;   // seconds
+    static float maxCompressionTime = 1.0f;   // seconds
 
-    static float prevDepth = 0.0f;
-    static bool isCompressing = false;
+    static float movementThreshold = 0.0003f;
+
+    bool isCompressing = false;
+    float compressionStartTime = 0f;
+    float compressionStartY = 0f;
+    float prevVerticalDist = 0f;
+
 
     public TextMeshProUGUI tutorialText;
     public TextMeshProUGUI BreathingText;
@@ -94,48 +99,71 @@ public class GameManager : MonoBehaviour
         timer += Time.deltaTime;
 
         //CPR 
-        if (handToCubeDist < 0.4 && handDist < 0.1)
+        if (handToCubeDist < 0.4f && handDist < 0.1f)
         {
-            //text.text = ("Hand Distance: " + handDist + "\nvert dist" + handToCubeVerticalDist + "reg dist: " + handToCubeDist + "score: " + score);
+            float verticalChange = handToCubeVerticalDist - prevVerticalDist;
 
-            if (handToCubeVerticalDist < prevDepth) // moving down
+            // Start of compression
+            if (!isCompressing && verticalChange < -movementThreshold)
             {
                 isCompressing = true;
+                compressionStartTime = Time.time;
+                compressionStartY = handToCubeVerticalDist; // how far above the chest you started
             }
-            else if (handToCubeVerticalDist > prevDepth && isCompressing) // moving up after compression
+            // Release / end of compression
+            else if (isCompressing && verticalChange > movementThreshold)
             {
-                if (handToCubeVerticalDist >= minAllowedDepth && handToCubeVerticalDist <= maxAllowedDepth)
+                float compressionTime = Time.time - compressionStartTime;
+                float compressionDepth = Mathf.Abs(compressionStartY - handToCubeVerticalDist);
+
+                Debug.Log($"StartY: {compressionStartY}, EndY: {handToCubeVerticalDist}, Depth: {compressionDepth}, Time: {compressionTime}");
+
+                if (compressionDepth >= minCompressionDepth && compressionDepth <= maxCompressionDepth)
                 {
-                    Debug.Log("Compression Successful!");
-                    score++;
+                    if (compressionTime >= minCompressionTime && compressionTime <= maxCompressionTime)
+                    {
+                        Debug.Log("Compression Successful!");
+                        tutorialText.text = "Compression Successful!";
+                        score++;
+                    }
+                    else
+                    {
+                        Debug.Log("Compression speed not right!");
+                        tutorialText.text = "Compression speed not right!";
+                        score--;
+                    }
                 }
-                else if (handToCubeVerticalDist > maxAllowedDepth)
+                else if (compressionDepth > maxCompressionDepth)
                 {
-                    Debug.Log("Compression too deep!");
+                    Debug.Log("Too deep!");
+                    tutorialText.text = "Compression too deep!";
                     score--;
                 }
                 else
                 {
-                    Debug.Log("Compression too shallow!");
+                    Debug.Log("Too shallow!");
+                    tutorialText.text = "Compression too shallow!";
                     score--;
                 }
 
                 isCompressing = false;
             }
 
-            // Update prevDepth *after* checking conditions
-            prevDepth = handToCubeVerticalDist;
-            }
-
+            // Update previous vertical distance
+            prevVerticalDist = handToCubeVerticalDist;
+        }
+        else
+        {
+            // Hands aren't in the right position, reset compression state
+            isCompressing = false;
+        }
 
         //Tutorial Text
         if (timer > 10)
         {
-            tutorialText.enabled = false;
+            //tutorialText.enabled = false;
             endGameButton.gameObject.SetActive(true);
         }
-          
-
 
         //Breathing
         if (breathingState == BreathingState.None)
