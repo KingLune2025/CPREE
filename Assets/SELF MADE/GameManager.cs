@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI tutorialText;
     public TextMeshProUGUI BreathingText;
-    public Button endGameButton;
 
     private void Awake()
     {
@@ -44,7 +43,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // Destroy duplicate instance
         }
-        endGameButton.gameObject.SetActive(false);
+     
     } // Sets singleton
     #region setters
     public void setScore(int value)
@@ -132,7 +131,6 @@ public class GameManager : MonoBehaviour
         if (timer > 10)
         {
             tutorialText.enabled = false;
-            endGameButton.gameObject.SetActive(true);
         }
           
 
