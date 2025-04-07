@@ -72,25 +72,22 @@ public class ConversationStarter : MonoBehaviour
             conversationStarted = true; // Prevents immediate retriggering
             inMenu = true; // Set inMenu to true when conversation starts
         }
-        Debug.Log("In Menu: " + inMenu);
-
+       
+        
+        //Conversation Choosing Options
         Vector2 vector2 = Vector2.zero;
         InputData.LController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out vector2);
-        Debug.Log(vector2);
-        bool canChange = true;
         
-        if (vector2.y > 0.8f && canChange && inMenu)
+        if (vector2.y > 0.9f && inMenu && !timedOut)
         {
             Debug.Log("Up");
             timedOut = true;
-            canChange = false;
             ConversationManager.Instance.SelectPreviousOption();
         }
-        else if (vector2.y < -0.8f && canChange && inMenu)
+        else if (vector2.y < -0.9f && inMenu && !timedOut)
         {
             Debug.Log("Down");
             timedOut = true;
-            canChange = false;
             ConversationManager.Instance.SelectNextOption();
         }
         if (triggerPressed && inMenu)
@@ -102,7 +99,7 @@ public class ConversationStarter : MonoBehaviour
         if (timedOut)
         {
             timer++;
-            if (timer > 120)
+            if (timer > 8)
             {
                 timedOut = false;
                 timer = 0;
