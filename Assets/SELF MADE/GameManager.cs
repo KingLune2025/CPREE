@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI tutorialText;
     public TextMeshProUGUI BreathingText;
+
+
+    private UnityEvent Event;
 
     private void Awake()
     {
@@ -92,6 +96,13 @@ public class GameManager : MonoBehaviour
         handToCubeVerticalDist = dist;
     }
     #endregion 
+
+
+    public void addScore(int value)
+    {
+        score += value;
+        Debug.Log("Updated score: " + score);
+    }
 
     private void Update()
     {
