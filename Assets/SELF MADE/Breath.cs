@@ -26,7 +26,7 @@ public class Breath : MonoBehaviour
             return;
         }
         float distance = Vector3.Distance(vrHeadset.position, militarydude.position);
-        Debug.Log("Distance: " + distance);
+        //Debug.Log("Distance: " + distance);
         if (distance < 1.8 && !breathChecked)
         {
             var random = new Random();

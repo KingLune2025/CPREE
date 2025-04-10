@@ -26,7 +26,7 @@ public class ConversationStarter : MonoBehaviour
         }
         else
         {
-            Debug.LogError("XRRayInteractor is not assigned to ConversationStarter.");
+            //Debug.LogError("XRRayInteractor is not assigned to ConversationStarter.");
         }
 
         GameObject myXROrigin = GameObject.Find("XR Origin");
@@ -38,13 +38,13 @@ public class ConversationStarter : MonoBehaviour
 
     public void testHoverEnter()
     {
-        Debug.Log("I got hovered YAY");
+        //Debug.Log("I got hovered YAY");
         isInteractable = true;
     }
 
     public void testHoverExit()
     {
-        Debug.Log("I lost my hover noo");
+        //Debug.Log("I lost my hover noo");
         isInteractable = false;
         conversationStarted = false; // Reset when leaving
     }
@@ -72,30 +72,30 @@ public class ConversationStarter : MonoBehaviour
             conversationStarted = true; // Prevents immediate retriggering
             inMenu = true; // Set inMenu to true when conversation starts
         }
-        Debug.Log("In Menu: " + inMenu);
+        //Debug.Log("In Menu: " + inMenu);
 
         Vector2 vector2 = Vector2.zero;
         InputData.LController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out vector2);
-        Debug.Log(vector2);
+        //Debug.Log(vector2);
         bool canChange = true;
         
         if (vector2.y > 0.8f && canChange && inMenu)
         {
-            Debug.Log("Up");
+            //Debug.Log("Up");
             timedOut = true;
             canChange = false;
             ConversationManager.Instance.SelectPreviousOption();
         }
         else if (vector2.y < -0.8f && canChange && inMenu)
         {
-            Debug.Log("Down");
+            //Debug.Log("Down");
             timedOut = true;
             canChange = false;
             ConversationManager.Instance.SelectNextOption();
         }
         if (triggerPressed && inMenu)
         {
-            Debug.Log("Select");
+            //Debug.Log("Select");
             timedOut = true;
             ConversationManager.Instance.PressSelectedOption();
         }
