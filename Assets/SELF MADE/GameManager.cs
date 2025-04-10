@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using DialogueEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public int score = 0;
     public float timer = 0.0f;
+    public float CPRtimer = 0.0f; 
     public List<string> mistakes = new List<string>();
     public bool isAlive = true;
 
@@ -37,8 +39,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI tutorialText;
     public TextMeshProUGUI BreathingText;
 
-
-    private UnityEvent Event;
+    public bool CPRMeasuringStarted = false;
 
     private void Awake()
     {
@@ -104,10 +105,22 @@ public class GameManager : MonoBehaviour
         Debug.Log("Updated score: " + score);
     }
 
+    public void CPRStarts(bool value)
+    {
+        CPRMeasuringStarted = value;
+    }
+
     private void Update()
     {
         timer += Time.deltaTime;
-
+        if (CPRMeasuringStarted)
+        {
+            CPRtimer += Time.deltaTime;
+        } 
+        if (CPRtimer > 120)
+        {
+            ConversationManager.Instance.SetBool("amboolance", true);
+        }
         //CPR 
         if (handToCubeDist < 0.4f && handDist < 0.1f)
         {

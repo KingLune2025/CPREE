@@ -17,6 +17,7 @@ public class ConversationStarter : MonoBehaviour
     double timer = 0;
     bool timedOut = false;
     bool inMenu = false;
+
     void Start()
     {
         if (interactor != null)
