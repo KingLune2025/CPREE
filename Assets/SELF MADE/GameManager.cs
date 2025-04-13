@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using DialogueEditor;
+using ConversationStarter;
 
 public class GameManager : MonoBehaviour
 {
@@ -114,9 +115,14 @@ public class GameManager : MonoBehaviour
     {
        
         timer += Time.deltaTime;
+        if (timer <= 8.00 && ConversationStarter.getConversationStarted())
+        {
+            score++;
+        }
         if (CPRMeasuringStarted)
         {
             CPRtimer += Time.deltaTime;
+            Debug.Log(CPRtimer);
         } 
         
         //CPR 

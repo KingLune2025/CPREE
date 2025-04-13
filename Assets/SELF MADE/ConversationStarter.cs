@@ -43,6 +43,10 @@ public class ConversationStarter : MonoBehaviour
         }
     }
 
+    public bool getConversationStarted(){
+        return conversationStarted;
+    }
+
     public void testHoverEnter()
     {
         Debug.Log("I got hovered YAY");
