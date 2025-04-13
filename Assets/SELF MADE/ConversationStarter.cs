@@ -6,6 +6,7 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.InputSystem.Controls;
 using System.Threading;
+using TMPro;
 
 public class ConversationStarter : MonoBehaviour
 {
@@ -17,7 +18,12 @@ public class ConversationStarter : MonoBehaviour
     double timer = 0;
     bool timedOut = false;
     bool inMenu = false;
+    bool isPaused = false; // Variable to track if the conversation is paused
+    public TextMeshProUGUI pauseConv;
 
+    public GameManager GameManager;
+
+    bool stopper = false;
     void Start()
     {
         if (interactor != null)
@@ -81,19 +87,16 @@ public class ConversationStarter : MonoBehaviour
         
         if (vector2.y > 0.9f && inMenu && !timedOut)
         {
-            Debug.Log("Up");
             timedOut = true;
             ConversationManager.Instance.SelectPreviousOption();
         }
         else if (vector2.y < -0.9f && inMenu && !timedOut)
         {
-            Debug.Log("Down");
             timedOut = true;
             ConversationManager.Instance.SelectNextOption();
         }
-        if (triggerPressed && inMenu)
+        if (triggerPressed && inMenu && !isPaused)
         {
-            Debug.Log("Select");
             timedOut = true;
             ConversationManager.Instance.PressSelectedOption();
         }
@@ -105,6 +108,24 @@ public class ConversationStarter : MonoBehaviour
                 timedOut = false;
                 timer = 0;
             }
+        }
+        
+
+        //Pausing Conversation
+        if (ConversationManager.Instance.DialogueText.text == "The ambulance will be here in a few seconds. Just hang in there." && !stopper)
+        {
+            stopper = true;
+            isPaused = true;
+            Debug.Log("Conversation Paused");
+            pauseConv.text = "Conversation Paused.";
+
+        }
+        Debug.Log(GameManager.CPRtimer);
+        if (GameManager.CPRtimer > 40)
+        {
+            isPaused = false;
+            Debug.Log("Conversation Unpaused");
+            pauseConv.text = "Conversation Unpaused.";
         }
     }
 }

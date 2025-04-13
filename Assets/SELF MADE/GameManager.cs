@@ -112,15 +112,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+       
         timer += Time.deltaTime;
         if (CPRMeasuringStarted)
         {
             CPRtimer += Time.deltaTime;
         } 
-        if (CPRtimer > 120)
-        {
-            ConversationManager.Instance.SetBool("amboolance", true);
-        }
+        
         //CPR 
         if (handToCubeDist < 0.4f && handDist < 0.1f)
         {
