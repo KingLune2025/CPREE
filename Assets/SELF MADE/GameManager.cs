@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using DialogueEditor;
-using ConversationStarter;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI BreathingText;
 
     public bool CPRMeasuringStarted = false;
+
+
+    public TextMeshProUGUI scoreText;
 
     private void Awake()
     {
@@ -113,12 +116,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-       
+        scoreText.text = "Score: " + score.ToString();
         timer += Time.deltaTime;
-        if (timer <= 8.00 && ConversationStarter.getConversationStarted())
-        {
-            score++;
-        }
         if (CPRMeasuringStarted)
         {
             CPRtimer += Time.deltaTime;
@@ -189,6 +188,7 @@ public class GameManager : MonoBehaviour
         if (timer > 10)
         {
             tutorialText.enabled = false;
+            timer = 0;
         }
 
         //Breathing

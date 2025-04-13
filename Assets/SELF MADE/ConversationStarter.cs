@@ -24,6 +24,7 @@ public class ConversationStarter : MonoBehaviour
     public GameManager GameManager;
 
     bool stopper = false;
+    bool stopper2 = false;
     void Start()
     {
         if (interactor != null)
@@ -125,11 +126,18 @@ public class ConversationStarter : MonoBehaviour
 
         }
         Debug.Log(GameManager.CPRtimer);
-        if (GameManager.CPRtimer > 40)
+        if (GameManager.CPRtimer > 300)
         {
             isPaused = false;
             Debug.Log("Conversation Unpaused");
             pauseConv.text = "Conversation Unpaused.";
+        }
+
+
+        if (GameManager.timer <= 15 && inMenu && !stopper2)
+        {
+            GameManager.score += 1;
+            stopper2 = true;
         }
     }
 }
