@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     static float movementThreshold = 0.0003f;
 
-    bool isCompressing = false;
     float compressionStartTime = 0f;
     float compressionStartY = 0f;
     float prevVerticalDist = 0f;
@@ -49,9 +48,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI BreathingText;
 
     public bool CPRMeasuringStarted = false;
-
-
-    public TextMeshProUGUI scoreText;
 
     private void Awake()
     {
@@ -125,7 +121,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = "Score: " + score.ToString();
         timer += Time.deltaTime;
         if (CPRMeasuringStarted)
         {
