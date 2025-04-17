@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     public float handToCubeDist = 0.0f;
     public float handToCubeVerticalDist = 0.0f;
 
-    static float lowerBound = -0.09f;
-    static float upperBound = 0.09f;
+    static float lowerBound = -0.09f; // ADJUSTABLE: max depth of CPR
+    static float upperBound = 0.09f; // ADJUSTABLE: min depth of CPR
 
     static float prevDepth = 0.0f;
     static bool isCompressing = false;
