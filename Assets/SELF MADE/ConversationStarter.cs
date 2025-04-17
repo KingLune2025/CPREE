@@ -129,7 +129,7 @@ public class ConversationStarter : MonoBehaviour
             pauseConv.text = "Conversation Paused.";
 
         }
-        Debug.Log(GameManager.CPRtimer);
+        //Debug.Log(GameManager.CPRtimer);
         if (GameManager.CPRtimer > 300)
         {
             isPaused = false;

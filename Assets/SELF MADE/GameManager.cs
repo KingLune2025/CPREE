@@ -25,14 +25,19 @@ public class GameManager : MonoBehaviour
     public float handToCubeDist = 0.0f;
     public float handToCubeVerticalDist = 0.0f;
 
-    static float lowerBound = -0.09f; // ADJUSTABLE: max depth of CPR
-    static float upperBound = 0.09f; // ADJUSTABLE: min depth of CPR
+    static float lowerBound = -0.06f; // ADJUSTABLE: max depth of CPR
+    static float upperBound = 0.06f; // ADJUSTABLE: min depth of CPR
+
+    static bool isCompressing = false;
+    static float movementThreshold = 0.01f;
+    static float prevDepth = 0f;
+    static float compressionStartTime = 0f;
 
 
     public TextMeshProUGUI tutorialText;
     public TextMeshProUGUI BreathingText;
 
-    public bool CPRMeasuringStarted = false;
+    public bool CPRMeasuringStarted = true;
 
 
     public TextMeshProUGUI scoreText;
@@ -111,19 +116,15 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = "Score: " + score.ToString();
         timer += Time.deltaTime;
-        if (CPRMeasuringStarted)
+        if (/*CPRMeasuringStarted &&*/ handToCubeDist < 0.4f && handDist < 0.1f)
         {
-            text.text = ("Hand Distance: " + Mathf.Round(handDist*100)/100 + "\nvert dist: " + Mathf.Round(handToCubeVerticalDist * 100) / 100 + "\nmotion: " + (isCompressing ? "down" : "up") + "\nscore: " + score);
+            text.text = ("CPR Active! motion: " + (isCompressing ? "down" : "up"));
 
-            // Start of compression
-            if (!isCompressing && verticalChange < -movementThreshold)
+            if (handToCubeVerticalDist < prevDepth) // Moving Down
             {
                 isCompressing = true;
-                compressionStartTime = Time.time;
-                compressionStartY = handToCubeVerticalDist; // how far above the chest you started
             }
-            // Release / end of compression
-            else if (isCompressing && verticalChange > movementThreshold)
+            else if (handToCubeVerticalDist > prevDepth && isCompressing)
             {
                 if (handToCubeVerticalDist >= lowerBound && handToCubeVerticalDist <= upperBound)
                 {
@@ -134,27 +135,23 @@ public class GameManager : MonoBehaviour
                 else if (handToCubeVerticalDist > upperBound)
                 {
                     Debug.Log("Compression too shallow!");
-                    statusText.text = "Compression too shallow";
-                    score--;
+                    statusText.text = "Compression too shallow!";
                 }
                 else
                 {
                     Debug.Log("Compression too deep!");
-                    statusText.text = "Compression too deep";
-                    score--;
+                    statusText.text = "Compression too deep!";
                 }
 
                 isCompressing = false;
             }
 
-            // Update prevDepth *after* checking conditions
             prevDepth = handToCubeVerticalDist;
         }
         else
         {
             text.text = ("Hand to hand Distance: " + Mathf.Round(handDist * 100) / 100 + "\nvert dist" + Mathf.Round(handToCubeVerticalDist * 100) / 100 + "\nreg dist: " + Mathf.Round(handToCubeDist * 100) / 100);
         }
-
 
         //Tutorial Text
         if (timer > 10)
