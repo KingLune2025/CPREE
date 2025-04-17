@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = "Score: " + score.ToString();
         timer += Time.deltaTime;
-        if (/*CPRMeasuringStarted &&*/ handToCubeDist < 0.4f && handDist < 0.1f)
+        if (CPRMeasuringStarted && handToCubeDist < 0.4f && handDist < 0.1f)
         {
             text.text = ("CPR Active! motion: " + (isCompressing ? "down" : "up"));
 
@@ -147,10 +147,6 @@ public class GameManager : MonoBehaviour
             }
 
             prevDepth = handToCubeVerticalDist;
-        }
-        else
-        {
-            text.text = ("Hand to hand Distance: " + Mathf.Round(handDist * 100) / 100 + "\nvert dist" + Mathf.Round(handToCubeVerticalDist * 100) / 100 + "\nreg dist: " + Mathf.Round(handToCubeDist * 100) / 100);
         }
 
         //Tutorial Text
