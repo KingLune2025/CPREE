@@ -135,6 +135,17 @@ public class ConversationStarter : MonoBehaviour
             isPaused = false;
             Debug.Log("Conversation Unpaused");
             pauseConv.text = "Conversation Unpaused.";
+    
+    // void Start()
+    // {
+    //    audioSource = GetComponent<AudioSource>();
+    // }
+
+    // public void PlaySoundEffect()
+    // {
+    //     audioSource.Play();
+    // }
+            
         }
 
 
