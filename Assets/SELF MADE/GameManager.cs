@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
 
     public TextMeshProUGUI scoreText;
+    public AudioSource soundEffect;
 
     private void Awake()
     {
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(timer);
         scoreText.text = "Score: " + score.ToString();
         timer += Time.deltaTime;
         if (CPRMeasuringStarted && handToCubeDist < 0.4f && handDist < 0.1f)
@@ -154,6 +156,7 @@ public class GameManager : MonoBehaviour
         {
             tutorialText.enabled = false;
             timer = 0;
+            soundEffect.Play();
         }
 
         //Breathing
