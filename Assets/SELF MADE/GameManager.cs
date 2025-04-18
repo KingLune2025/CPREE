@@ -14,7 +14,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI text;
     public TextMeshProUGUI statusText;
 
+    // score
     public int score = 0;
+    public int compressions = 0;
+    public int trueDepths = 0;
+
     public float timer = 0.0f;
     public float CPRtimer = 0.0f; 
     public List<string> mistakes = new List<string>();
@@ -57,7 +61,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("min depth: " + lowerBound + " | max depth" + upperBound);
      
     } // Sets singleton
-    #region setters
+    #region setter
     public void setScore(int value)
     {
         score = value;
@@ -100,7 +104,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion 
 
-
     public void addScore(int value)
     {
         score += value;
@@ -126,11 +129,16 @@ public class GameManager : MonoBehaviour
             }
             else if (handToCubeVerticalDist > prevDepth && isCompressing)
             {
+                // accuracy = accuracy from center
+                float accuracy = 1 - Mathf.Abs((handToCubeDist-handToCubeVerticalDist)/handToCubeDist);
+
+                // depth
                 if (handToCubeVerticalDist >= lowerBound && handToCubeVerticalDist <= upperBound)
                 {
                     Debug.Log("Compression Successful!");
                     statusText.text = "Compression Successful";
                     score++;
+                    trueDepths++;
                 }
                 else if (handToCubeVerticalDist > upperBound)
                 {
@@ -143,6 +151,10 @@ public class GameManager : MonoBehaviour
                     statusText.text = "Compression too deep!";
                 }
 
+                // accuracy
+                Debug.Log(accuracy);
+
+                compressions++;
                 isCompressing = false;
             }
 
