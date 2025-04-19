@@ -1805,6 +1805,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &482583580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8699017496735173967, guid: fb5b03538c364e043967eddb647ab9c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 232181962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328201585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &491589169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4305,6 +4317,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bb35e30754ded1b458a77799176309ad,
     type: 3}
   m_PrefabInstance: {fileID: 1109366404}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1120820162 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1806995308105209206, guid: fb5b03538c364e043967eddb647ab9c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 232181962}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1122327013
 GameObject:
@@ -7242,6 +7260,11 @@ MonoBehaviour:
   CPRMeasuringStarted: 0
   scoreText: {fileID: 1510844003}
   soundEffect: {fileID: 1555712167}
+  player: {fileID: 482583580}
+  inEndGame: 0
+  camera: {fileID: 1120820162}
+  Conversation: {fileID: 728576730}
+  endGameButton: {fileID: 1346684004}
 --- !u!1 &1716692319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3535473601529558972, guid: 9c993bdd1f0fb3e4da5b61dabec5fbb3,

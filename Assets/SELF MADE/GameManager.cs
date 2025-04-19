@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using DialogueEditor;
+using Unity.XR.CoreUtils;
+using Unity.VisualScripting;
 
 
 public class GameManager : MonoBehaviour
@@ -42,6 +44,13 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public AudioSource soundEffect;
+    private InputData InputData;
+    public XROrigin player;
+    bool tutorialActive = true;
+    public bool inEndGame = false;
+    public Transform camera;
+    public Canvas Conversation;
+    public UnityEngine.Object endGameButton;
 
     private void Awake()
     {
@@ -56,7 +65,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // Destroy duplicate instance
         }
         Debug.Log("min depth: " + lowerBound + " | max depth" + upperBound);
-     
+
+        if (player != null)
+        {
+            InputData = player.GetComponent<InputData>();
+        }
+
     } // Sets singleton
     #region setters
     public void setScore(int value)
@@ -152,11 +166,12 @@ public class GameManager : MonoBehaviour
         }
 
         //Tutorial Text
-        if (timer > 10)
+        if (timer > 10 && tutorialActive) 
         {
             tutorialText.enabled = false;
             timer = 0;
             soundEffect.Play();
+            tutorialActive = false;
         }
 
         //Breathing
@@ -168,6 +183,23 @@ public class GameManager : MonoBehaviour
             BreathingText.text = (breathingState.ToString());
         }
 
+        
+        bool leftTriggerPressed = false;
+        InputData.LController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out leftTriggerPressed);
+        if (leftTriggerPressed || inEndGame)
+        {
+            player.transform.position = new Vector3(-30, 0.975f, 2);
+            player.transform.rotation = Quaternion.Euler(0, 180, 0);
+            camera.transform.rotation = Quaternion.Euler(0, 180, 0);
+            inEndGame = true;
+        }
+        Debug.Log("left trigger pressed: " + leftTriggerPressed);
+
+        if (inEndGame)
+        {
+            Conversation.enabled = false;
+            endGameButton.IsDestroyed();
+        }
     }
 
 }

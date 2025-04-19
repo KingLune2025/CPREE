@@ -91,19 +91,19 @@ public class ConversationStarter : MonoBehaviour
         //Debug.Log(vector2);
         bool canChange = true;
         
-        if (vector2.y > 0.9f && inMenu && !timedOut)
+        if (vector2.y > 0.9f && inMenu && !timedOut && !GameManager.inEndGame)
         {
             //Debug.Log("Up");
             timedOut = true;
             ConversationManager.Instance.SelectPreviousOption();
         }
-        else if (vector2.y < -0.9f && inMenu && !timedOut)
+        else if (vector2.y < -0.9f && inMenu && !timedOut && !GameManager.inEndGame)
         {
             //Debug.Log("Down");
             timedOut = true;
             ConversationManager.Instance.SelectNextOption();
         }
-        if (triggerPressed && inMenu && !isPaused)
+        if (triggerPressed && inMenu && !isPaused && !GameManager.inEndGame)
         {
             //Debug.Log("Select");
             timedOut = true;
