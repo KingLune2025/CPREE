@@ -130,14 +130,14 @@ public class GameManager : MonoBehaviour
             else if (handToCubeVerticalDist > prevDepth && isCompressing)
             {
                 // accuracy = accuracy from center
-                float accuracy = 1 - Mathf.Abs((handToCubeDist-handToCubeVerticalDist)/handToCubeDist);
+                float accuracy += 1 - Mathf.Abs((handToCubeDist-handToCubeVerticalDist)/handToCubeDist);
+                debug.Log("Accuracy: " + accuracy);
 
                 // depth
                 if (handToCubeVerticalDist >= lowerBound && handToCubeVerticalDist <= upperBound)
                 {
                     Debug.Log("Compression Successful!");
                     statusText.text = "Compression Successful";
-                    score++;
                     trueDepths++;
                 }
                 else if (handToCubeVerticalDist > upperBound)
@@ -150,10 +150,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Compression too deep!");
                     statusText.text = "Compression too deep!";
                 }
-
-                // accuracy
-                Debug.Log(accuracy);
-
+                
                 compressions++;
                 isCompressing = false;
             }
