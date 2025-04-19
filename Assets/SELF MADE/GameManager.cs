@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public TextMeshProUGUI text;
     public TextMeshProUGUI statusText;
+    public TextMeshProUGUI speedText;
 
     public int score = 0;
     public float timer = 0.0f;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     bool tutorialActive = true;
     public bool inEndGame = false;
     public Transform camera;
+    private float compressionTimer = 0f; 
     public Canvas Conversation;
     public UnityEngine.Object endGameButton;
 
@@ -129,18 +131,26 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(timer);
+        //Debug.Log(timer);
         scoreText.text = "Score: " + score.ToString();
         timer += Time.deltaTime;
+        compressionTimer += Time.deltaTime;
         if (CPRMeasuringStarted && handToCubeDist < 0.4f && handDist < 0.1f)
         {
-            text.text = ("CPR Active! motion: " + (isCompressing ? "down" : "up"));
+            text.text = "CPR Active! motion: " + (isCompressing ? "down" : "up");
 
             if (handToCubeVerticalDist < prevDepth) // Moving Down
             {
+                if (!isCompressing) { // Moving down AFTER reaching peak up
+                    if (compressionTimer <= 0.7f && compressionTimer >= 0.4f) speedText.text = "Compression good speed!";
+                    else if (compressionTimer < 0.4f) speedText.text = "Too Fast!!!!";
+                    else speedText.text = "Too Slow!";
+
+                    compressionTimer = 0f;
+                }
                 isCompressing = true;
             }
-            else if (handToCubeVerticalDist > prevDepth && isCompressing)
+            else if (handToCubeVerticalDist > prevDepth && isCompressing) // Moving Up
             {
                 if (handToCubeVerticalDist >= lowerBound && handToCubeVerticalDist <= upperBound)
                 {
