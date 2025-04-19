@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int compressions = 0;
     public int trueDepths = 0;
+    public float accuracyPos = 0.0f;
 
     public float timer = 0.0f;
     public float CPRtimer = 0.0f; 
@@ -130,8 +131,10 @@ public class GameManager : MonoBehaviour
             else if (handToCubeVerticalDist > prevDepth && isCompressing)
             {
                 // accuracy = accuracy from center
-                float accuracy += 1 - Mathf.Abs((handToCubeDist-handToCubeVerticalDist)/handToCubeDist);
-                debug.Log("Accuracy: " + accuracy);
+                accuracyPos += 1 - Mathf.Abs((handToCubeDist-Mathf.Abs(handToCubeVerticalDist))/handToCubeDist);
+                Debug.Log("AccuracyPos: " + accuracyPos);
+                Debug.Log("Accuracy: " + (accuracyPos/compressions * 100));
+                Debug.Log("Compressions: " + compressions);
 
                 // depth
                 if (handToCubeVerticalDist >= lowerBound && handToCubeVerticalDist <= upperBound)
