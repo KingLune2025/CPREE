@@ -188,15 +188,15 @@ public class GameManager : MonoBehaviour
         InputData.LController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out leftTriggerPressed);
         if (leftTriggerPressed || inEndGame)
         {
-            player.transform.position = new Vector3(-30, 0.975f, 2);
-            player.transform.rotation = Quaternion.Euler(0, 180, 0);
-            camera.transform.rotation = Quaternion.Euler(0, 180, 0);
             inEndGame = true;
         }
         Debug.Log("left trigger pressed: " + leftTriggerPressed);
 
         if (inEndGame)
         {
+            player.transform.position = new Vector3(-30, 0.975f, 2);
+            player.transform.rotation = Quaternion.Euler(0, 180, 0);
+            camera.transform.rotation = Quaternion.Euler(0, 180, 0);
             Conversation.enabled = false;
             endGameButton.IsDestroyed();
         }
