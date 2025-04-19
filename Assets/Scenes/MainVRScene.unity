@@ -7728,6 +7728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 599773798}
   statusText: {fileID: 943451698}
+  speedText: {fileID: 0}
   score: 0
   timer: 0
   CPRtimer: 0
@@ -9066,9 +9067,21 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1682786075}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: incrementMistakes
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Does not know how to do CPR.
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 16
@@ -9302,6 +9315,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1682786075}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: incrementMistakes
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Less efficient answer for "Okay, I'm here to help. What
+            happened to your dad?"
+          m_BoolArgument: 0
+        m_CallState: 2
   NodeID: 6
   TMPFont: {fileID: 0}
   Icon: {fileID: 0}
@@ -9331,6 +9357,19 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1682786075}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: incrementMistakes
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Less efficient answer for "Okay, I'm here to help. What
+            happened to your dad?"
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 5
@@ -9414,6 +9453,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1682786075}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: incrementMistakes
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Less efficient answer for "911 What's the problem?".
+          m_BoolArgument: 0
+        m_CallState: 2
   NodeID: 2
   TMPFont: {fileID: 0}
   Icon: {fileID: 0}
@@ -9443,6 +9494,18 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1682786075}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: incrementMistakes
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Less efficient answer for "911 What's the problem?"
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 1
@@ -10832,7 +10895,31 @@ MonoBehaviour:
   EndConversationFont: {fileID: 0}
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1682786075}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: addScore
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1682786075}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CPRStarts
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &2090716762
 Transform:
   m_ObjectHideFlags: 0
