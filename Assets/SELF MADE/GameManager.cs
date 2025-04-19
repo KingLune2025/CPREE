@@ -131,7 +131,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(timer);
+        Debug.Log("mistakes" + mistakes.Count);
+
         scoreText.text = "Score: " + score.ToString();
         timer += Time.deltaTime;
         compressionTimer += Time.deltaTime;
