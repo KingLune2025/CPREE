@@ -90,6 +90,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< Updated upstream
+=======
+        Debug.Log(mistakes.ToString());
+        scoreText.text = "Score: " + score.ToString();
+>>>>>>> Stashed changes
         timer += Time.deltaTime;
 
         //CPR 
