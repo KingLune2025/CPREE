@@ -30,6 +30,7 @@ public class ConversationStarter : MonoBehaviour
     // score
     public float accuracy = 0.0f;
     public float depth = 0.0f;
+    public float bpm = 0.0f;
 
     void Start()
     {
@@ -141,6 +142,7 @@ public class ConversationStarter : MonoBehaviour
             isPaused = false;
             accuracy = (GameManager.accuracyPos/GameManager.compressions) * 100;
             depth = (GameManager.trueDepths/GameManager.compressions) * 100;
+            bpm = (GameManager.compressions/GameManager.CPRtimer) * 100;
 
             if (accuracy >= 85){
                 GameManager.score += 10;
@@ -156,6 +158,10 @@ public class ConversationStarter : MonoBehaviour
             } else if (depth >= 50){
                 GameManager.score += 5;
                 pauseConv.text = "Points added";
+            }
+
+            if (bpm >= 100 && bpm <= 120){
+                GameManager.score += 10;
             }
     
     // void Start()
