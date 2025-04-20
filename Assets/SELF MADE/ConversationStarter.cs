@@ -25,6 +25,11 @@ public class ConversationStarter : MonoBehaviour
 
     bool stopper = false;
     bool stopper2 = false;
+
+    // score
+    public float accuracy = 0.0f;
+    public float depth = 0.0f;
+
     void Start()
     {
         if (interactor != null)
@@ -135,6 +140,20 @@ public class ConversationStarter : MonoBehaviour
             isPaused = false;
             Debug.Log("Conversation Unpaused");
             pauseConv.text = "Conversation Unpaused.";
+            accuracy = (GameManager.accuracyPos/GameManager.compressions) * 100;
+            depth = (GameManager.trueDepths/GameManager.compressions) * 100;
+
+            if (accuracy >= 85){
+                GameManager.score += 10;
+            } else if (accuracy >= 70){
+                GameManager.score += 5;
+            }
+
+            if (depth >= 85){
+                GameManager.score += 10;
+            } else if (accuracy >= 70){
+                GameManager.score += 5;
+            }
     
     // void Start()
     // {
