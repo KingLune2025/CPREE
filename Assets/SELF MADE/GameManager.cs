@@ -17,7 +17,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI statusText;
     public TextMeshProUGUI speedText;
 
+    // score
     public int score = 0;
+    public int compressions = 0;
+    public int trueDepths = 0;
+    public float accuracyPos = 0.0f;
+
     public float timer = 0.0f;
     public float CPRtimer = 0.0f; 
     public List<string> mistakes = new List<string>();
@@ -53,7 +58,7 @@ public class GameManager : MonoBehaviour
     private float compressionTimer = 0f; 
     public Canvas Conversation;
     public UnityEngine.Object endGameButton;
-
+    public TextMeshProUGUI endScreenText;
     private void Awake()
     {
         // Ensure only one instance exists
@@ -74,7 +79,7 @@ public class GameManager : MonoBehaviour
         }
 
     } // Sets singleton
-    #region setters
+    #region setter
     public void setScore(int value)
     {
         score = value;
@@ -117,7 +122,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion 
 
-
     public void addScore(int value)
     {
         score += value;
@@ -131,7 +135,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(timer);
+        Debug.Log("Mistakes: " + mistakes.Count);
         scoreText.text = "Score: " + score.ToString();
         timer += Time.deltaTime;
         compressionTimer += Time.deltaTime;
@@ -152,11 +156,18 @@ public class GameManager : MonoBehaviour
             }
             else if (handToCubeVerticalDist > prevDepth && isCompressing) // Moving Up
             {
+                // accuracy = accuracy from center
+                accuracyPos += 1 - Mathf.Abs((handToCubeDist-Mathf.Abs(handToCubeVerticalDist))/handToCubeDist);
+                Debug.Log("AccuracyPos: " + accuracyPos);
+                Debug.Log("Accuracy: " + (accuracyPos/compressions * 100));
+                Debug.Log("Compressions: " + compressions);
+
+                // depth
                 if (handToCubeVerticalDist >= lowerBound && handToCubeVerticalDist <= upperBound)
                 {
                     Debug.Log("Compression Successful!");
                     statusText.text = "Compression Successful";
-                    score++;
+                    trueDepths++;
                 }
                 else if (handToCubeVerticalDist > upperBound)
                 {
@@ -168,7 +179,8 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Compression too deep!");
                     statusText.text = "Compression too deep!";
                 }
-
+                
+                compressions++;
                 isCompressing = false;
             }
 
@@ -204,14 +216,31 @@ public class GameManager : MonoBehaviour
 
         if (inEndGame)
         {
-            player.transform.position = new Vector3(-30, 0.975f, 2);
-            player.transform.rotation = Quaternion.Euler(0, 180, 0);
-            camera.transform.rotation = Quaternion.Euler(0, 180, 0);
-            Conversation.enabled = false;
-            endGameButton.IsDestroyed();
+            endGame();
+            inEndGame = false;
         }
     }
 
+
+    public void endGame()
+    {
+        player.transform.position = new Vector3(-30, 0.975f, 2);
+        player.transform.rotation = Quaternion.Euler(0, 180, 0);
+        camera.transform.rotation = Quaternion.Euler(0, 180, 0);
+        Conversation.enabled = false;
+        endGameButton.IsDestroyed();
+        endScreenText.text = "Game Complete \n Mistakes- \n Conversation Mistakes: \n";
+        int a = 1;
+        foreach (String mistake in mistakes)
+        {
+            endScreenText.text = endScreenText.text + a + ". " + mistake + "\n";
+        }
+        endScreenText.text = endScreenText.text + "CPR Mistakes: \n";
+        if (accuracyPos/compressions < 0.85)
+        {
+            endScreenText.text = endScreenText.text + "1. Position of hands on chest was incorrect \n";
+        }
+    }
 }
 
 public enum BreathingState
@@ -221,6 +250,7 @@ public enum BreathingState
     AbnormalBreathing,
     NotBreathing
 }
+
 
 
 
