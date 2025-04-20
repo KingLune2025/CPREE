@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     private float compressionTimer = 0f; 
     public Canvas Conversation;
     public UnityEngine.Object endGameButton;
-
+    public TextMeshProUGUI endScreenText;
     private void Awake()
     {
         // Ensure only one instance exists
@@ -216,14 +216,24 @@ public class GameManager : MonoBehaviour
 
         if (inEndGame)
         {
-            player.transform.position = new Vector3(-30, 0.975f, 2);
-            player.transform.rotation = Quaternion.Euler(0, 180, 0);
-            camera.transform.rotation = Quaternion.Euler(0, 180, 0);
-            Conversation.enabled = false;
-            endGameButton.IsDestroyed();
+            endGame();
+            inEndGame = false;
         }
     }
 
+
+    public void endGame()
+    {
+        player.transform.position = new Vector3(-30, 0.975f, 2);
+        player.transform.rotation = Quaternion.Euler(0, 180, 0);
+        camera.transform.rotation = Quaternion.Euler(0, 180, 0);
+        Conversation.enabled = false;
+        endGameButton.IsDestroyed();
+        foreach (String mistake in mistakes)
+        {
+            endScreenText.text = endScreenText.text + ", " + mistake;
+        }
+    }
 }
 
 public enum BreathingState
@@ -233,6 +243,7 @@ public enum BreathingState
     AbnormalBreathing,
     NotBreathing
 }
+
 
 
 
