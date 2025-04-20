@@ -229,9 +229,16 @@ public class GameManager : MonoBehaviour
         camera.transform.rotation = Quaternion.Euler(0, 180, 0);
         Conversation.enabled = false;
         endGameButton.IsDestroyed();
+        endScreenText.text = "Game Complete \n Mistakes- \n Conversation Mistakes: \n";
+        int a = 1;
         foreach (String mistake in mistakes)
         {
-            endScreenText.text = endScreenText.text + ", " + mistake;
+            endScreenText.text = endScreenText.text + a + ". " + mistake + "\n";
+        }
+        endScreenText.text = endScreenText.text + "CPR Mistakes: \n";
+        if (accuracyPos/compressions < 0.85)
+        {
+            endScreenText.text = endScreenText.text + "1. Position of hands on chest was incorrect \n";
         }
     }
 }
