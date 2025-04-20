@@ -19,6 +19,7 @@ public class ConversationStarter : MonoBehaviour
     bool timedOut = false;
     bool inMenu = false;
     bool isPaused = false; // Variable to track if the conversation is paused
+   
     public TextMeshProUGUI pauseConv;
 
     public GameManager GameManager;
@@ -135,24 +136,26 @@ public class ConversationStarter : MonoBehaviour
 
         }
         //Debug.Log(GameManager.CPRtimer);
-        if (GameManager.CPRtimer > 300)
+        if (GameManager.CPRtimer > 60 && isPaused)
         {
             isPaused = false;
-            Debug.Log("Conversation Unpaused");
-            pauseConv.text = "Conversation Unpaused.";
             accuracy = (GameManager.accuracyPos/GameManager.compressions) * 100;
             depth = (GameManager.trueDepths/GameManager.compressions) * 100;
 
             if (accuracy >= 85){
                 GameManager.score += 10;
-            } else if (accuracy >= 70){
+                pauseConv.text = "Points added";
+            } else if (accuracy >= 50){
                 GameManager.score += 5;
+                pauseConv.text = "Points added";
             }
 
             if (depth >= 85){
                 GameManager.score += 10;
-            } else if (accuracy >= 70){
+                pauseConv.text = "Points added";
+            } else if (depth >= 50){
                 GameManager.score += 5;
+                pauseConv.text = "Points added";
             }
     
     // void Start()

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI tutorialText;
     public TextMeshProUGUI BreathingText;
 
-    public bool CPRMeasuringStarted = true;
+    public bool CPRMeasuringStarted = false;
 
 
     public TextMeshProUGUI scoreText;
@@ -135,8 +135,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Mistakes: " + mistakes.Count);
-        scoreText.text = "Score: " + score.ToString();
+        if (CPRMeasuringStarted) {
+            CPRtimer += Time.deltaTime;
+        }
+        Debug.Log("CPRTimer: " + CPRtimer);
         timer += Time.deltaTime;
         compressionTimer += Time.deltaTime;
         if (CPRMeasuringStarted && handToCubeDist < 0.4f && handDist < 0.1f)
@@ -240,6 +242,7 @@ public class GameManager : MonoBehaviour
         {
             endScreenText.text = endScreenText.text + "1. Position of hands on chest was incorrect \n";
         }
+        endScreenText.text = endScreenText.text + "Score: " + score + "\n";
     }
 }
 
