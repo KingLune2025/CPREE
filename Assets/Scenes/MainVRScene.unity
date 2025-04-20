@@ -5880,8 +5880,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cube: {fileID: 32404024}
-  rHand: {fileID: 0}
-  lHand: {fileID: 0}
+  rHand: {fileID: 1750552526}
+  lHand: {fileID: 232181969}
 --- !u!114 &1328201603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5894,8 +5894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e5033772ecc2c47a7279177461457d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rHand: {fileID: 0}
-  lHand: {fileID: 0}
+  rHand: {fileID: 1750552526}
+  lHand: {fileID: 232181969}
 --- !u!114 &1328201604
 MonoBehaviour:
   m_ObjectHideFlags: 0
