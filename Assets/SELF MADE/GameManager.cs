@@ -243,6 +243,9 @@ public class GameManager : MonoBehaviour
             endScreenText.text = endScreenText.text + "1. Position of hands on chest was incorrect \n";
         }
         endScreenText.text = endScreenText.text + "Score: " + score + "\n";
+        endScreenText.text = endScreenText.text + "Accuracy: " + ((accuracyPos/compressions)*100) + "\n";
+        endScreenText.text = endScreenText.text + "Depth: " + ((trueDepths/compressions)*100) + "\n";
+        endScreenText.text = endScreenText.text + "BPM: " + ((compressions/CPRtimer)*60) + "\n";
     }
 }
 

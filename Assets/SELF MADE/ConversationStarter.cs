@@ -147,21 +147,27 @@ public class ConversationStarter : MonoBehaviour
             if (accuracy >= 85){
                 GameManager.score += 10;
                 pauseConv.text = "Points added";
+                Debug.Log("Accuracy +10");
+
             } else if (accuracy >= 50){
                 GameManager.score += 5;
                 pauseConv.text = "Points added";
+                Debug.Log("Accuracy +5");
             }
 
             if (depth >= 85){
                 GameManager.score += 10;
                 pauseConv.text = "Points added";
+                Debug.Log("Depth +10");
             } else if (depth >= 50){
                 GameManager.score += 5;
                 pauseConv.text = "Points added";
+                Debug.Log("Depth +5");
             }
 
-            if (bpm >= 100 && bpm <= 120){
+            if (bpm >= 50 && bpm <= 200){ // change this to 100-120
                 GameManager.score += 10;
+                Debug.Log("BPM +10");
             }
     
     // void Start()

@@ -8099,6 +8099,7 @@ MonoBehaviour:
   GameManager: {fileID: 1682786075}
   accuracy: 0
   depth: 0
+  bpm: 0
 --- !u!114 &1723358758
 MonoBehaviour:
   m_ObjectHideFlags: 0
