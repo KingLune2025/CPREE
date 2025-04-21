@@ -165,7 +165,7 @@ public class ConversationStarter : MonoBehaviour
                 Debug.Log("Depth +5");
             }
 
-            if (bpm >= 50 && bpm <= 200){ // change this to 100-120
+            if (bpm >= 100 && bpm <= 120){ // change this to 100-120
                 GameManager.score += 10;
                 Debug.Log("BPM +10");
             }
