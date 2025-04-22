@@ -19,8 +19,7 @@ public class ConversationStarter : MonoBehaviour
     bool timedOut = false;
     bool inMenu = false;
     bool isPaused = false; // Variable to track if the conversation is paused
-   
-    public TextMeshProUGUI amBoolance;
+  
 
     public GameManager GameManager;
 
@@ -49,7 +48,7 @@ public class ConversationStarter : MonoBehaviour
         {
             InputData = myXROrigin.GetComponent<InputData>();
         }
-        amBoolance.enabled = false; // Hide the text at the start
+        
     }
 
     public bool getConversationStarted(){
@@ -97,7 +96,6 @@ public class ConversationStarter : MonoBehaviour
         Vector2 vector2 = Vector2.zero;
         InputData.LController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out vector2);
         //Debug.Log(vector2);
-        bool canChange = true;
         
         if (vector2.y > 0.9f && inMenu && !timedOut && !GameManager.inEndGame)
         {
@@ -140,14 +138,13 @@ public class ConversationStarter : MonoBehaviour
         if (GameManager.CPRtimer > 60 && isPaused)
         {
             isPaused = false;
-            amBoolance.enabled = true; // Show the text when the condition is met
-            amBoolance.text = "The ambulance is here! \n You can stop CPR now.";
+            
             if ((GameManager.accuracyPos / GameManager.compressions) + 5 > 1)
                 accuracy = 1;
             else
-                accuracy = ((GameManager.accuracyPos / GameManager.compressions) + 5) * 100;
+                accuracy = (GameManager.accuracyPos / GameManager.compressions) * 100;
             depth = (GameManager.trueDepths/GameManager.compressions) * 100;
-            bpm = (GameManager.compressions/GameManager.CPRtimer) * 100;
+            bpm = (GameManager.compressions/(GameManager.CPRtimer/60));
 
             if (accuracy >= 85){
                 GameManager.score += 10;
