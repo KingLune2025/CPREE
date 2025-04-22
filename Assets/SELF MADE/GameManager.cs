@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     // score
     public int score = 0;
     public int compressions = 0;
-    public int trueDepths = 0;
+    public float trueDepths = 0;
     public float accuracyPos = 0.0f;
 
     public float timer = 0.0f;
@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     public Canvas Conversation;
     public UnityEngine.Object endGameButton;
     public TextMeshProUGUI endScreenText;
+    public TextMeshProUGUI depthText;
     private void Awake()
     {
         // Ensure only one instance exists
@@ -135,6 +136,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+      
         if (CPRMeasuringStarted) {
             CPRtimer += Time.deltaTime;
         }
@@ -143,6 +145,7 @@ public class GameManager : MonoBehaviour
         compressionTimer += Time.deltaTime;
         if (CPRMeasuringStarted && handToCubeDist < 0.4f && handDist < 0.1f)
         {
+            depthText.text = handToCubeVerticalDist.ToString("F2") + " m";
             text.text = "CPR Active! motion: " + (isCompressing ? "down" : "up");
 
             if (handToCubeVerticalDist < prevDepth) // Moving Down
@@ -244,7 +247,7 @@ public class GameManager : MonoBehaviour
         }
         endScreenText.text = endScreenText.text + "Score: " + score + "\n";
         endScreenText.text = endScreenText.text + "Accuracy: " + ((accuracyPos/compressions)*100) + "\n";
-        endScreenText.text = endScreenText.text + "Depth: " + ((trueDepths/compressions)*100) + "\n";
+        endScreenText.text = endScreenText.text + trueDepths + "Depth: " + ((trueDepths/compressions)*100) + "\n";
         endScreenText.text = endScreenText.text + "BPM: " + ((compressions/CPRtimer)*60) + "\n";
     }
 }

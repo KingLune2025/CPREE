@@ -140,7 +140,10 @@ public class ConversationStarter : MonoBehaviour
         if (GameManager.CPRtimer > 60 && isPaused)
         {
             isPaused = false;
-            accuracy = (GameManager.accuracyPos/GameManager.compressions) * 100;
+            if ((GameManager.accuracyPos / GameManager.compressions) + 5 > 1)
+                accuracy = 1;
+            else
+                accuracy = ((GameManager.accuracyPos / GameManager.compressions) + 5) * 100;
             depth = (GameManager.trueDepths/GameManager.compressions) * 100;
             bpm = (GameManager.compressions/GameManager.CPRtimer) * 100;
 
