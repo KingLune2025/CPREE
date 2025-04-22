@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
 {
     // Singleton Instance (without private set)
     public static GameManager Instance;
-    public TextMeshProUGUI text;
-    public TextMeshProUGUI statusText;
+
     public TextMeshProUGUI speedText;
 
     // score
@@ -48,16 +47,16 @@ public class GameManager : MonoBehaviour
     public bool CPRMeasuringStarted = false;
 
 
-    public TextMeshProUGUI scoreText;
+
     public AudioSource soundEffect;
     private InputData InputData;
     public XROrigin player;
     bool tutorialActive = true;
     public bool inEndGame = false;
-    public Transform camera;
+
     private float compressionTimer = 0f; 
     public Canvas Conversation;
-    public UnityEngine.Object endGameButton;
+
     public TextMeshProUGUI endScreenText;
     public TextMeshProUGUI depthText;
     private void Awake()
@@ -78,6 +77,8 @@ public class GameManager : MonoBehaviour
         {
             InputData = player.GetComponent<InputData>();
         }
+        speedText.enabled = false;
+        depthText.enabled = false;
 
     } // Sets singleton
     #region setter
@@ -145,8 +146,11 @@ public class GameManager : MonoBehaviour
         compressionTimer += Time.deltaTime;
         if (CPRMeasuringStarted && handToCubeDist < 0.4f && handDist < 0.1f)
         {
-            depthText.text = handToCubeVerticalDist.ToString("F2") + " m";
-            text.text = "CPR Active! motion: " + (isCompressing ? "down" : "up");
+            speedText.enabled = true;
+            depthText.enabled = true;
+            depthText.text = "Depth: " + handToCubeVerticalDist.ToString("F2") + " m";
+            speedText.text = "CPR Speed: " + (compressions / CPRtimer) * 60;
+            
 
             if (handToCubeVerticalDist < prevDepth) // Moving Down
             {
@@ -171,18 +175,16 @@ public class GameManager : MonoBehaviour
                 if (handToCubeVerticalDist >= lowerBound && handToCubeVerticalDist <= upperBound)
                 {
                     Debug.Log("Compression Successful!");
-                    statusText.text = "Compression Successful";
+                    
                     trueDepths++;
                 }
                 else if (handToCubeVerticalDist > upperBound)
                 {
                     Debug.Log("Compression too shallow!");
-                    statusText.text = "Compression too shallow!";
                 }
                 else
                 {
                     Debug.Log("Compression too deep!");
-                    statusText.text = "Compression too deep!";
                 }
                 
                 compressions++;
@@ -231,9 +233,9 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = new Vector3(-30, 0.975f, 2);
         player.transform.rotation = Quaternion.Euler(0, 180, 0);
-        camera.transform.rotation = Quaternion.Euler(0, 180, 0);
+        
         Conversation.enabled = false;
-        endGameButton.IsDestroyed();
+        
         endScreenText.text = "Game Complete \n Mistakes- \n Conversation Mistakes: \n";
         int a = 1;
         foreach (String mistake in mistakes)
@@ -247,7 +249,7 @@ public class GameManager : MonoBehaviour
         }
         endScreenText.text = endScreenText.text + "Score: " + score + "\n";
         endScreenText.text = endScreenText.text + "Accuracy: " + ((accuracyPos/compressions)*100) + "\n";
-        endScreenText.text = endScreenText.text + trueDepths + "Depth: " + ((trueDepths/compressions)*100) + "\n";
+        endScreenText.text = endScreenText.text + "Depth: " + ((trueDepths/compressions)*100) + "\n";
         endScreenText.text = endScreenText.text + "BPM: " + ((compressions/CPRtimer)*60) + "\n";
     }
 }

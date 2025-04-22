@@ -20,7 +20,7 @@ public class ConversationStarter : MonoBehaviour
     bool inMenu = false;
     bool isPaused = false; // Variable to track if the conversation is paused
    
-    public TextMeshProUGUI pauseConv;
+    public TextMeshProUGUI amBoolance;
 
     public GameManager GameManager;
 
@@ -31,7 +31,7 @@ public class ConversationStarter : MonoBehaviour
     public float accuracy = 0.0f;
     public float depth = 0.0f;
     public float bpm = 0.0f;
-
+   
     void Start()
     {
         if (interactor != null)
@@ -49,6 +49,7 @@ public class ConversationStarter : MonoBehaviour
         {
             InputData = myXROrigin.GetComponent<InputData>();
         }
+        amBoolance.enabled = false; // Hide the text at the start
     }
 
     public bool getConversationStarted(){
@@ -132,14 +133,15 @@ public class ConversationStarter : MonoBehaviour
         {
             stopper = true;
             isPaused = true;
-            Debug.Log("Conversation Paused");
-            pauseConv.text = "Conversation Paused.";
+           
 
         }
         //Debug.Log(GameManager.CPRtimer);
         if (GameManager.CPRtimer > 60 && isPaused)
         {
             isPaused = false;
+            amBoolance.enabled = true; // Show the text when the condition is met
+            amBoolance.text = "The ambulance is here! \n You can stop CPR now.";
             if ((GameManager.accuracyPos / GameManager.compressions) + 5 > 1)
                 accuracy = 1;
             else
@@ -149,22 +151,22 @@ public class ConversationStarter : MonoBehaviour
 
             if (accuracy >= 85){
                 GameManager.score += 10;
-                pauseConv.text = "Points added";
+               
                 Debug.Log("Accuracy +10");
 
             } else if (accuracy >= 50){
                 GameManager.score += 5;
-                pauseConv.text = "Points added";
+                
                 Debug.Log("Accuracy +5");
             }
 
             if (depth >= 85){
                 GameManager.score += 10;
-                pauseConv.text = "Points added";
+               
                 Debug.Log("Depth +10");
             } else if (depth >= 50){
                 GameManager.score += 5;
-                pauseConv.text = "Points added";
+             
                 Debug.Log("Depth +5");
             }
 
