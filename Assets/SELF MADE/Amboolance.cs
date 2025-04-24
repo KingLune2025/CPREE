@@ -7,18 +7,20 @@ public class Amboolance : MonoBehaviour
     public GameManager gameManager;
     public ConversationStarter conversationStarter;
     public AudioSource soundEffect;
+    bool stopper = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        //soundEffect.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.CPRtimer > 60 && conversationStarter.isPaused)
+        if (gameManager.CPRtimer > 240 && !stopper)
         {
             soundEffect.Play();
+            stopper = true;
         }
     }
 }

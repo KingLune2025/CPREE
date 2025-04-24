@@ -18,7 +18,7 @@ public class ConversationStarter : MonoBehaviour
     double timer = 0;
     bool timedOut = false;
     bool inMenu = false;
-    bool isPaused = false; // Variable to track if the conversation is paused
+    public bool isPaused = false; // Variable to track if the conversation is paused
   
 
     public GameManager GameManager;
@@ -127,22 +127,23 @@ public class ConversationStarter : MonoBehaviour
         
 
         //Pausing Conversation
-        if (ConversationManager.Instance.DialogueText.text == "The ambulance will be here in a few seconds. Just hang in there." && !stopper)
+        if (ConversationManager.Instance.DialogueText.text == "Let me know when the ambulance arrives." && !stopper)
         {
+            Debug.Log("Paused!!!!!!!!!");
             stopper = true;
             isPaused = true;
-           
-
         }
         //Debug.Log(GameManager.CPRtimer);
-        if (GameManager.CPRtimer > 60 && isPaused)
+        if (GameManager.CPRtimer > 240)
         {
+            Debug.Log("CPR done!");
             isPaused = false;
             
             if ((GameManager.accuracyPos / GameManager.compressions) + 5 > 1)
                 accuracy = 1;
             else
                 accuracy = (GameManager.accuracyPos / GameManager.compressions) * 100;
+
             depth = (GameManager.trueDepths/GameManager.compressions) * 100;
             bpm = (GameManager.compressions/(GameManager.CPRtimer/60));
 

@@ -137,9 +137,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-      
         if (CPRMeasuringStarted) {
             CPRtimer += Time.deltaTime;
+            Debug.Log("CPR Timer: " + CPRtimer);
         }
         //Debug.Log("CPRTimer: " + CPRtimer);
         timer += Time.deltaTime;
@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
             speedText.enabled = true;
             depthText.enabled = true;
             depthText.text = "CPR Depth: " + (Math.Round(handToCubeVerticalDist*3937.01f)/100f - 2).ToString("F2") + " in";
-            speedText.text = "CPR Speed: " + (compressions / (CPRtimer/60))+ " Compressions/Min";
+            speedText.text = "CPR Speed: " + (compressions / (CPRtimer/60))+ " Avg. Compressions/Min";
             
 
             if (handToCubeVerticalDist < prevDepth) // Moving Down
@@ -219,7 +219,6 @@ public class GameManager : MonoBehaviour
         {
             inEndGame = true;
         }
-        Debug.Log("left trigger pressed: " + leftTriggerPressed);
 
         if (inEndGame)
         {
