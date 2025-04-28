@@ -17,10 +17,15 @@ public class Amboolance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.CPRtimer > 240 && !stopper)
+        if (gameManager.CPRtimer > 60 && !stopper)
         {
             soundEffect.Play();
             stopper = true;
+        }
+
+        if(GameManager.ugh)
+        {
+            soundEffect.Stop();
         }
     }
 }

@@ -19,6 +19,7 @@ public class ConversationStarter : MonoBehaviour
     bool timedOut = false;
     bool inMenu = false;
     public bool isPaused = false; // Variable to track if the conversation is paused
+    bool goofyStopper = false;
   
 
     public GameManager GameManager;
@@ -134,61 +135,49 @@ public class ConversationStarter : MonoBehaviour
             isPaused = true;
         }
         //Debug.Log(GameManager.CPRtimer);
-        if (GameManager.CPRtimer > 240)
+        if (GameManager.CPRtimer > 60 && !goofyStopper)
         {
+            goofyStopper = true;
             Debug.Log("CPR done!");
             isPaused = false;
-            
-            if ((GameManager.accuracyPos / GameManager.compressions) + 5 > 1)
-                accuracy = 1;
-            else
-                accuracy = (GameManager.accuracyPos / GameManager.compressions) * 100;
 
+            accuracy = (GameManager.accuracyPos / GameManager.compressions) * 100;
+            Debug.Log("Accuracy: " + accuracy);
             depth = (GameManager.trueDepths/GameManager.compressions) * 100;
+            Debug.Log("Depth: " + depth);
             bpm = (GameManager.compressions/(GameManager.CPRtimer/60));
+            Debug.Log("BPM: " + bpm);
 
             if (accuracy >= 85){
-                GameManager.score += 10;
+                GameManager.addScore(10);
                
                 Debug.Log("Accuracy +10");
 
             } else if (accuracy >= 50){
-                GameManager.score += 5;
+                GameManager.addScore(5);
                 
                 Debug.Log("Accuracy +5");
             }
 
             if (depth >= 85){
-                GameManager.score += 10;
+                GameManager.addScore(10);
                
                 Debug.Log("Depth +10");
             } else if (depth >= 50){
-                GameManager.score += 5;
+                GameManager.addScore(5);
              
                 Debug.Log("Depth +5");
             }
 
-            if (bpm >= 100 && bpm <= 120){ // change this to 100-120
-                GameManager.score += 10;
+            if (bpm >= 100 && bpm <= 120){
+                GameManager.addScore(10);
                 Debug.Log("BPM +10");
             }
-    
-    // void Start()
-    // {
-    //    audioSource = GetComponent<AudioSource>();
-    // }
-
-    // public void PlaySoundEffect()
-    // {
-    //     audioSource.Play();
-    // }
-            
-        }
-
+        } 
 
         if (GameManager.timer <= 15 && inMenu && !stopper2)
         {
-            GameManager.score += 1;
+            GameManager.addScore(1);
             stopper2 = true;
         }
     }

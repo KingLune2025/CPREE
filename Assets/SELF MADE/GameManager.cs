@@ -39,13 +39,15 @@ public class GameManager : MonoBehaviour
     static float movementThreshold = 0.01f;
     static float prevDepth = 0f;
     static float compressionStartTime = 0f;
-
+    static List<float> lastThreeCompressionSpeeds = new List<float>();
+    private List<float> lastThreeCompressionTimes = new List<float>();
 
     public TextMeshProUGUI tutorialText;
     public TextMeshProUGUI BreathingText;
 
     public bool CPRMeasuringStarted = false;
-
+    bool incrementCPR = false;
+    static public bool ugh = false;
 
 
     public AudioSource soundEffect;
@@ -71,7 +73,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject); // Destroy duplicate instance
         }
-        Debug.Log("min depth: " + lowerBound + " | max depth" + upperBound);
 
         if (player != null)
         {
@@ -90,7 +91,7 @@ public class GameManager : MonoBehaviour
     public void setTimer(float value)
     {
         timer = value;
-        Debug.Log("Updated timer: " + timer);
+        //Debug.Log("Updated timer: " + timer);
     }
     public void incrementMistakes(string mistake)
     {
@@ -99,12 +100,12 @@ public class GameManager : MonoBehaviour
     public void resetMistakes()
     {
         mistakes = new List<string>();
-        Debug.Log("reset mistakes");
+        //Debug.Log("reset mistakes");
     }
     public void SetAliveState(bool value)
     {
         isAlive = value;
-        Debug.Log("Updated alive to: " + isAlive);
+        //Debug.Log("Updated alive to: " + isAlive);
     }
     public void setBreathingState(BreathingState s)
     {
@@ -137,26 +138,38 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (CPRMeasuringStarted) {
+        if (incrementCPR) {
             CPRtimer += Time.deltaTime;
-            Debug.Log("CPR Timer: " + CPRtimer);
+            //Debug.Log("CPR Timer: " + CPRtimer);
         }
         //Debug.Log("CPRTimer: " + CPRtimer);
         timer += Time.deltaTime;
         compressionTimer += Time.deltaTime;
         if (CPRMeasuringStarted && handToCubeDist < 0.4f && handDist < 0.1f)
         {
+            incrementCPR = true;
             speedText.enabled = true;
             depthText.enabled = true;
             depthText.text = "CPR Depth: " + (Math.Round(handToCubeVerticalDist*3937.01f)/100f - 2).ToString("F2") + " in";
-            speedText.text = "CPR Speed: " + (compressions / (CPRtimer/60))+ " Avg. Compressions/Min";
-            
+            if (lastThreeCompressionTimes.Count > 0)
+            {
+                float avgTime = 0f;
+                foreach (float t in lastThreeCompressionTimes)
+                {
+                    avgTime += t;
+                }
+                avgTime /= lastThreeCompressionTimes.Count;
+
+                float avgSpeed = 60f / avgTime;
+                speedText.text = "CPR Speed: " + avgSpeed.ToString("F2") + " Avg. Compressions/Min";
+            }
+
 
             if (handToCubeVerticalDist < prevDepth) // Moving Down
             {
                 if (!isCompressing) { // Moving down AFTER reaching peak up
                     if (compressionTimer <= 0.7f && compressionTimer >= 0.4f) speedText.text = "Compression good speed!";
-                    else if (compressionTimer < 0.4f) speedText.text = "Too Fast!!!!";
+                    else if (compressionTimer < 0.4f) speedText.text = "Too Fast!";
                     else speedText.text = "Too Slow!";
 
                     compressionTimer = 0f;
@@ -165,17 +178,11 @@ public class GameManager : MonoBehaviour
             }
             else if (handToCubeVerticalDist > prevDepth && isCompressing) // Moving Up
             {
-                // accuracy = accuracy from 
-                accuracyPos += 1 - Mathf.Abs((handToCubeDist-Mathf.Abs(handToCubeVerticalDist))/handToCubeDist);
-                Debug.Log("AccuracyPos: " + accuracyPos);
-                Debug.Log("Accuracy: " + (accuracyPos/compressions * 100));
-                Debug.Log("Compressions: " + compressions);
+                accuracyPos += 1 - Mathf.Abs((handToCubeDist - Mathf.Abs(handToCubeVerticalDist)) / handToCubeDist);
 
-                // depth
                 if (handToCubeVerticalDist >= lowerBound && handToCubeVerticalDist <= upperBound)
                 {
                     Debug.Log("Compression Successful!");
-                    
                     trueDepths++;
                 }
                 else if (handToCubeVerticalDist > upperBound)
@@ -186,8 +193,17 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.Log("Compression too deep!");
                 }
-                
+
                 compressions++;
+
+                // Record compression time
+                lastThreeCompressionTimes.Add(compressionTimer*2);
+                if (lastThreeCompressionTimes.Count > 2)
+                {
+                    lastThreeCompressionTimes.RemoveAt(0);
+                }
+
+                compressionTimer = 0f; // Reset timer for next compression
                 isCompressing = false;
             }
 
@@ -211,13 +227,13 @@ public class GameManager : MonoBehaviour
             BreathingText.enabled = true;
             BreathingText.text = (breathingState.ToString());
         }
-
         
         bool leftTriggerPressed = false;
         InputData.LController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out leftTriggerPressed);
         if (leftTriggerPressed || inEndGame)
         {
             inEndGame = true;
+            ugh = true;
         }
 
         if (inEndGame)
@@ -242,14 +258,14 @@ public class GameManager : MonoBehaviour
             endScreenText.text = endScreenText.text + a + ". " + mistake + "\n";
         }
         endScreenText.text = endScreenText.text + "CPR Mistakes: \n";
-        if (accuracyPos/compressions < 0.85)
+        if (accuracyPos/compressions < 0.65)
         {
             endScreenText.text = endScreenText.text + "1. Position of hands on chest was incorrect \n";
         }
-        endScreenText.text = endScreenText.text + "Score: " + score + "\n";
-        endScreenText.text = endScreenText.text + "Accuracy: " + ((accuracyPos/compressions)*100) + "% \n";
-        endScreenText.text = endScreenText.text + "Depth: " + ((trueDepths/compressions)*100) + "% \n";
-        endScreenText.text = endScreenText.text + "BPM: " + (compressions/(CPRtimer/60))+ "\n";
+        endScreenText.text = endScreenText.text + "Score: " + score + "/46\n";
+        endScreenText.text = endScreenText.text + "Accuracy: " + Mathf.Round((accuracyPos/compressions)*10000)/100 + "% \n";
+        endScreenText.text = endScreenText.text + "Depth: " + Mathf.Round((trueDepths/compressions)*10000)/100 + "% \n";
+        endScreenText.text = endScreenText.text + "BPM: " + Mathf.Round(compressions/(CPRtimer/60)*100)/100 + "\n";
     }
 }
 

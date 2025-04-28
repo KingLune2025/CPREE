@@ -45,11 +45,11 @@ public class Person : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("Object clicked!");
+        //Debug.Log("Object clicked!");
     }
 
     public void OnRelease()  // When the interaction ends, restore things
     {
-        Debug.Log("Object released!");
+        //Debug.Log("Object released!");
     }
 }
