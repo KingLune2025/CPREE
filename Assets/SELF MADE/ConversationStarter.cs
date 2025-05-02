@@ -31,7 +31,10 @@ public class ConversationStarter : MonoBehaviour
     public float accuracy = 0.0f;
     public float depth = 0.0f;
     public float bpm = 0.0f;
-   
+    public int pos = 0;
+    public int dpth = 0;
+    public int bPm = 0;
+
     void Start()
     {
         if (interactor != null)
@@ -135,13 +138,14 @@ public class ConversationStarter : MonoBehaviour
             isPaused = true;
         }
         //Debug.Log(GameManager.CPRtimer);
-        if (GameManager.CPRtimer > 60 && !goofyStopper)
+        if (GameManager.CPRtimer > 80 && !goofyStopper)
         {
             goofyStopper = true;
             Debug.Log("CPR done!");
             isPaused = false;
 
-            accuracy = (GameManager.accuracyPos / GameManager.compressions) * 100;
+            accuracy = ((GameManager.accuracyPos / GameManager.compressions) * 100)+10;
+
             Debug.Log("Accuracy: " + accuracy);
             depth = (GameManager.trueDepths/GameManager.compressions) * 100;
             Debug.Log("Depth: " + depth);
@@ -150,27 +154,28 @@ public class ConversationStarter : MonoBehaviour
 
             if (accuracy >= 85){
                 GameManager.addScore(10);
-               
+                pos = 1;
                 Debug.Log("Accuracy +10");
 
             } else if (accuracy >= 50){
                 GameManager.addScore(5);
-                
+                pos = 2;
                 Debug.Log("Accuracy +5");
             }
 
             if (depth >= 85){
                 GameManager.addScore(10);
-               
+                dpth = 1;
                 Debug.Log("Depth +10");
             } else if (depth >= 50){
                 GameManager.addScore(5);
-             
+                dpth = 2;
                 Debug.Log("Depth +5");
             }
 
             if (bpm >= 100 && bpm <= 120){
                 GameManager.addScore(10);
+                bPm = 1;
                 Debug.Log("BPM +10");
             }
         } 

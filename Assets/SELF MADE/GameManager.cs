@@ -61,6 +61,13 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI endScreenText;
     public TextMeshProUGUI depthText;
+    public AudioSource babyCrying;
+    bool cryStopper = false;
+
+    public ConversationStarter conversationStarter;
+    public TextMeshProUGUI endGameText;
+
+    bool stopText = false;
     private void Awake()
     {
         // Ensure only one instance exists
@@ -138,6 +145,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (timer > 50 && !cryStopper) 
+        {
+            babyCrying.Play();
+            cryStopper = true;
+        }
         if (incrementCPR) {
             CPRtimer += Time.deltaTime;
             //Debug.Log("CPR Timer: " + CPRtimer);
@@ -148,8 +160,11 @@ public class GameManager : MonoBehaviour
         if (CPRMeasuringStarted && handToCubeDist < 0.4f && handDist < 0.1f)
         {
             incrementCPR = true;
+            if (!stopText)
+            { 
             speedText.enabled = true;
             depthText.enabled = true;
+            }
             depthText.text = "CPR Depth: " + (Math.Round(handToCubeVerticalDist*3937.01f)/100f - 2).ToString("F2") + " in";
             if (lastThreeCompressionTimes.Count > 0)
             {
@@ -161,16 +176,14 @@ public class GameManager : MonoBehaviour
                 avgTime /= lastThreeCompressionTimes.Count;
 
                 float avgSpeed = 60f / avgTime;
-                speedText.text = "CPR Speed: " + avgSpeed.ToString("F2") + " Avg. Compressions/Min";
+                speedText.text = "CPR Speed: " + avgSpeed.ToString("F2") + " BPM";
             }
 
 
             if (handToCubeVerticalDist < prevDepth) // Moving Down
             {
                 if (!isCompressing) { // Moving down AFTER reaching peak up
-                    if (compressionTimer <= 0.7f && compressionTimer >= 0.4f) speedText.text = "Compression good speed!";
-                    else if (compressionTimer < 0.4f) speedText.text = "Too Fast!";
-                    else speedText.text = "Too Slow!";
+                   
 
                     compressionTimer = 0f;
                 }
@@ -224,7 +237,10 @@ public class GameManager : MonoBehaviour
             BreathingText.enabled = false;
         else
         {
-            BreathingText.enabled = true;
+            if (!stopText)
+            {
+                BreathingText.enabled = true;
+            }
             BreathingText.text = (breathingState.ToString());
         }
         
@@ -234,6 +250,7 @@ public class GameManager : MonoBehaviour
         {
             inEndGame = true;
             ugh = true;
+            stopText = true;
         }
 
         if (inEndGame)
@@ -246,6 +263,11 @@ public class GameManager : MonoBehaviour
 
     public void endGame()
     {
+        BreathingText.enabled = false;
+        speedText.enabled = false;
+        depthText.enabled = false;
+        endGameText.enabled = false;
+
         player.transform.position = new Vector3(-30, 0.975f, 2);
         player.transform.rotation = Quaternion.Euler(0, 180, 0);
         
@@ -256,16 +278,77 @@ public class GameManager : MonoBehaviour
         foreach (String mistake in mistakes)
         {
             endScreenText.text = endScreenText.text + a + ". " + mistake + "\n";
+            a++;
+        }
+        if (a == 1)
+        {
+            endScreenText.text = endScreenText.text + "None \n 15/15 Conversation Points \n";
+            
         }
         endScreenText.text = endScreenText.text + "CPR Mistakes: \n";
-        if (accuracyPos/compressions < 0.65)
+        
+            
+       
+
+        endScreenText.text = endScreenText.text + "1. Accuracy: " + Mathf.Round((accuracyPos/compressions)*10000)/100 + "% \n";
+        if (conversationStarter.pos == 1)
         {
-            endScreenText.text = endScreenText.text + "1. Position of hands on chest was incorrect \n";
+            endScreenText.text = endScreenText.text + "Position Score: 10/10 \n";
+            endScreenText.text = endScreenText.text + "Position of hands on chest was correct \n";
         }
-        endScreenText.text = endScreenText.text + "Score: " + score + "/46\n";
-        endScreenText.text = endScreenText.text + "Accuracy: " + Mathf.Round((accuracyPos/compressions)*10000)/100 + "% \n";
-        endScreenText.text = endScreenText.text + "Depth: " + Mathf.Round((trueDepths/compressions)*10000)/100 + "% \n";
-        endScreenText.text = endScreenText.text + "BPM: " + Mathf.Round(compressions/(CPRtimer/60)*100)/100 + "\n";
+        else if (conversationStarter.pos == 2)
+        {
+            endScreenText.text = endScreenText.text + "Position Score: 5/10 \n";
+            endScreenText.text = endScreenText.text + "Position of hands on chest could have been better \n";
+        }
+        else
+        {
+            endScreenText.text = endScreenText.text + "Position Score: 0/10 \n";
+            endScreenText.text = endScreenText.text + "Position of hands on chest was incorrect \n";
+        }
+
+            endScreenText.text = endScreenText.text + "2. Depth: " + Mathf.Round((trueDepths/compressions)*10000)/100 + "% \n";
+        if (conversationStarter.dpth == 1)
+        {
+            endScreenText.text = endScreenText.text + "Depth Score: 10/10 \n";
+            endScreenText.text = endScreenText.text + "Depth of CPR was correct \n";
+        }
+        else if (conversationStarter.dpth == 2)
+        {
+            endScreenText.text = endScreenText.text + "Depth Score: 5/10 \n";
+            endScreenText.text = endScreenText.text + "Depth of CPR could have been better \n";
+        }
+        else
+        {
+            endScreenText.text = endScreenText.text + "Depth Score: 0/10 \n";
+            endScreenText.text = endScreenText.text + "Depth of CPR was incorrect \n";
+        }
+            endScreenText.text = endScreenText.text + "BPM: " + Mathf.Round(compressions/(CPRtimer/60)*100)/100 + "\n";
+        if (conversationStarter.dpth == 1)
+        {
+            endScreenText.text = endScreenText.text + "BPM Score: 10/10 \n";
+            endScreenText.text = endScreenText.text + "Speed of CPR was correct \n";
+        }
+        else
+        {
+            endScreenText.text = endScreenText.text + "BPM Score: 0/10 \n";
+            endScreenText.text = endScreenText.text + "Speed of CPR was incorrect \n";
+        }
+
+        endScreenText.text = endScreenText.text + "Overall Speed of Gameplay: " ;
+        if (score % 10 == 1 || score % 10 == 6)
+        {
+            endScreenText.text = endScreenText.text + "Good\n";
+            endScreenText.text = endScreenText.text + "Speed Score: 1/1 \n";
+        }
+        else
+        {
+            endScreenText.text = endScreenText.text + "Slow\n";
+            endScreenText.text = endScreenText.text + "Speed Score: 0/1 \n";
+        }
+       
+
+            endScreenText.text = endScreenText.text + "Total Score: " + score + "/46\n";
     }
 }
 
